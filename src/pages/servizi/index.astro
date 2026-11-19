@@ -1,0 +1,77 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BlocksRenderer from '../../components/BlocksRenderer.astro';
+import siteData from '../../data/siteData.json';
+import {
+  buildResponsiveSrcset,
+  normalizeAstroHref,
+  optimizeImageUrlToWebp
+} from '../../utils/seoAndContent.js';
+
+const p = siteData.pages.servizi;
+const g = siteData.global;
+const callHref = normalizeAstroHref(p.rowCallCtaHref || g.phoneHref);
+const firstServiceImage = siteData.services[0]?.image;
+---
+
+<BaseLayout entity={p} routeContext={{ type: 'page', id: 'servizi' }} preloadImage={firstServiceImage}>
+  <article>
+    <section class="bg-brand-blue text-white py-14 lg:py-20">
+      <div class="container mx-auto px-4 lg:px-8 max-w-4xl text-center space-y-4">
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold">{p.h1}</h1>
+        <p class="text-blue-100 text-base sm:text-lg leading-relaxed">{p.heroSubtitle}</p>
+      </div>
+    </section>
+
+    <section class="py-14 lg:py-20 container mx-auto px-4 lg:px-8 space-y-16">
+      {(siteData.services || []).map((srv, idx) => {
+        const reverse = idx % 2 === 1;
+        const srvCallHref = normalizeAstroHref(srv.ctaBannerHref || callHref);
+        return (
+          <div class="bg-white rounded-3xl border border-slate-200/90 shadow-xs overflow-hidden grid lg:grid-cols-12 items-center">
+            <div class={`lg:col-span-5 ${reverse ? 'lg:order-2' : ''}`}>
+              <img
+                src={optimizeImageUrlToWebp(srv.image)}
+                srcset={buildResponsiveSrcset(srv.image)}
+                sizes="(max-width: 1024px) 100vw, 42vw"
+                alt={srv.imageAlt}
+                width="1000"
+                height="700"
+                loading={idx === 0 ? 'eager' : 'lazy'}
+                fetchpriority={idx === 0 ? 'high' : undefined}
+                decoding="async"
+                class="w-full h-72 lg:h-full min-h-[300px] object-cover"
+              />
+            </div>
+            <div class={`lg:col-span-7 p-7 sm:p-10 space-y-5 ${reverse ? 'lg:order-1' : ''}`}>
+              <div class="text-xs font-extrabold uppercase tracking-wider text-brand-light">Servizio Specializzato</div>
+              <h2 class="text-2xl sm:text-3xl font-extrabold text-brand-blue">{srv.shortTitle}</h2>
+              <p class="text-slate-600 leading-relaxed text-base">{srv.hubExcerpt}</p>
+              <ul class="space-y-2 text-sm text-slate-700">
+                {(srv.hubBullets || []).map((b) => (
+                  <li class="flex items-center gap-2.5">
+                    <span class="w-5 h-5 rounded-full bg-sky-100 text-brand-light flex items-center justify-center text-xs font-bold shrink-0">&#10003;</span>
+                    <span>{b}</span>
+                  </li>
+                ))}
+              </ul>
+              <div class="pt-3 flex flex-wrap gap-3">
+                <a href={`/servizi/${srv.slug}`} class="inline-flex items-center justify-center gap-2 bg-brand-blue hover:bg-blue-800 text-white font-bold px-6 py-3 rounded-xl transition-colors text-sm">
+                  <span>{p.rowDetailCtaLabel || 'Scopri i dettagli'}</span>
+                  <span>&rarr;</span>
+                </a>
+                <a href={srvCallHref} class="inline-flex items-center justify-center gap-2 bg-brand-green hover:bg-brand-greenHover text-white font-bold px-6 py-3 rounded-xl transition-colors text-sm">
+                  <span>{p.rowCallCtaLabel || g.ctaLabel}</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        );
+      })}
+
+      <div class="max-w-4xl mx-auto pt-4">
+        <BlocksRenderer blocks={p.blocks} faqs={p.faqs} />
+      </div>
+    </section>
+  </article>
+</BaseLayout>

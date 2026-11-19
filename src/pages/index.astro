@@ -1,0 +1,215 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import siteData from '../data/siteData.json';
+import {
+  buildResponsiveSrcset,
+  normalizeAstroHref,
+  optimizeImageUrlToWebp
+} from '../utils/seoAndContent.js';
+
+const h = siteData.pages.home;
+const g = siteData.global;
+const pHref = normalizeAstroHref(h.heroPrimaryCtaHref || g.phoneHref);
+const sHref = normalizeAstroHref(h.heroSecondaryCtaHref || '/contatti');
+const bHref = normalizeAstroHref(h.bottomCtaHref || g.phoneHref);
+---
+
+<BaseLayout entity={h} routeContext={{ type: 'page', id: 'home' }} preloadImage={h.heroImage}>
+  <article>
+    <!-- HERO SECTION -->
+    <section class="bg-gradient-to-br from-brand-blue via-blue-900 to-sky-900 text-white py-16 lg:py-24">
+      <div class="container mx-auto px-4 lg:px-8 grid lg:grid-cols-12 gap-10 items-center">
+        <div class="lg:col-span-7 space-y-6">
+          <div class="inline-flex items-center gap-2 bg-white/10 border border-white/20 text-sky-200 text-xs font-bold uppercase tracking-wider px-3.5 py-1.5 rounded-full">
+            <span>{h.heroEyebrow}</span>
+          </div>
+          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight tracking-tight">
+            {h.h1}
+          </h1>
+          <p class="text-base sm:text-lg text-blue-100 leading-relaxed max-w-2xl">
+            {h.heroSubtitle}
+          </p>
+          <div class="flex flex-col sm:flex-row gap-3.5 pt-2">
+            <a
+              href={pHref}
+              class="inline-flex items-center justify-center gap-2 bg-brand-green hover:bg-brand-greenHover text-white font-bold px-7 py-4 rounded-xl shadow-lg transition-colors text-base"
+            >
+              <span>{h.heroPrimaryCtaLabel}</span>
+            </a>
+            <a
+              href={sHref}
+              class="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 border border-white/25 text-white font-semibold px-7 py-4 rounded-xl transition-colors text-base"
+            >
+              <span>{h.heroSecondaryCtaLabel}</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="lg:col-span-5">
+          <div class="bg-white/10 p-2.5 rounded-3xl border border-white/15 shadow-2xl">
+            <img
+              src={optimizeImageUrlToWebp(h.heroImage)}
+              srcset={buildResponsiveSrcset(h.heroImage)}
+              sizes="(max-width: 1024px) 100vw, 45vw"
+              alt={h.heroImageAlt}
+              width="1200"
+              height="800"
+              loading="eager"
+              fetchpriority="high"
+              decoding="async"
+              class="w-full h-72 sm:h-80 lg:h-96 object-cover rounded-2xl"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEZIONE SERVIZI IN HOMEPAGE -->
+    <section class="py-16 lg:py-20 container mx-auto px-4 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-12 space-y-3">
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-brand-blue">{h.servicesSectionTitle}</h2>
+        <p class="text-slate-600 text-base">{h.servicesSectionSubtitle}</p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {(siteData.services || []).map((srv) => (
+          <div class="bg-white rounded-2xl border border-slate-200/90 shadow-xs hover:shadow-md transition-shadow flex flex-col overflow-hidden">
+            <img
+              src={optimizeImageUrlToWebp(srv.image)}
+              srcset={buildResponsiveSrcset(srv.image)}
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+              alt={srv.imageAlt}
+              width="800"
+              height="500"
+              loading="lazy"
+              decoding="async"
+              class="w-full h-44 object-cover"
+            />
+            <div class="p-6 flex flex-col flex-grow">
+              <h3 class="text-lg font-extrabold text-slate-900 mb-2">{srv.shortTitle}</h3>
+              <p class="text-sm text-slate-600 leading-relaxed mb-5 flex-grow">{srv.hubExcerpt}</p>
+              <a href={`/servizi/${srv.slug}`} class="inline-flex items-center gap-1.5 text-sm font-bold text-brand-light hover:text-brand-blue">
+                <span>Approfondisci il servizio</span>
+                <span>&rarr;</span>
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="text-center mt-10">
+        <a
+          href={normalizeAstroHref(h.servicesHubCtaHref || '/servizi')}
+          class="inline-flex items-center justify-center gap-2 bg-brand-blue hover:bg-blue-800 text-white font-bold px-7 py-3.5 rounded-xl transition-colors text-sm"
+        >
+          <span>{h.servicesHubCtaLabel}</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- SEZIONE CHI SIAMO IN HOMEPAGE -->
+    <section class="py-16 bg-white border-y border-slate-200/80">
+      <div class="container mx-auto px-4 lg:px-8 grid lg:grid-cols-12 gap-10 items-center">
+        <div class="lg:col-span-5">
+          <img
+            src={optimizeImageUrlToWebp(h.aboutSectionImage)}
+            srcset={buildResponsiveSrcset(h.aboutSectionImage)}
+            sizes="(max-width: 1024px) 100vw, 42vw"
+            alt={h.aboutSectionImageAlt}
+            width="1000"
+            height="700"
+            loading="lazy"
+            decoding="async"
+            class="w-full h-80 object-cover rounded-3xl shadow-md"
+          />
+        </div>
+        <div class="lg:col-span-7 space-y-5">
+          <div class="text-xs font-extrabold uppercase tracking-wider text-brand-light">{h.aboutSectionEyebrow}</div>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-brand-blue">{h.aboutSectionTitle}</h2>
+          <p class="text-slate-600 leading-relaxed text-base">{h.aboutSectionText}</p>
+          <ul class="space-y-2.5 text-sm text-slate-700">
+            {(h.aboutSectionPoints || []).map((pt) => (
+              <li class="flex items-center gap-2.5">
+                <span class="w-5 h-5 rounded-full bg-green-100 text-brand-green flex items-center justify-center text-xs font-bold shrink-0">&#10003;</span>
+                <span>{pt}</span>
+              </li>
+            ))}
+          </ul>
+          <div class="pt-2">
+            <a
+              href={normalizeAstroHref(h.aboutSectionCtaHref || '/chi-siamo')}
+              class="inline-flex items-center gap-2 bg-sky-50 hover:bg-sky-100 text-brand-blue border border-sky-200 font-bold px-6 py-3 rounded-xl transition-colors text-sm"
+            >
+              <span>{h.aboutSectionCtaLabel}</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEZIONE BLOG IN HOMEPAGE -->
+    <section class="py-16 lg:py-20 container mx-auto px-4 lg:px-8">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
+        <div class="space-y-2 max-w-2xl">
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-brand-blue">{h.blogSectionTitle}</h2>
+          <p class="text-slate-600 text-base">{h.blogSectionSubtitle}</p>
+        </div>
+        <a
+          href={normalizeAstroHref(h.blogSectionCtaHref || '/blog')}
+          class="inline-flex items-center gap-2 text-sm font-bold text-brand-light hover:text-brand-blue shrink-0"
+        >
+          <span>{h.blogSectionCtaLabel}</span>
+        </a>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        {(siteData.posts || []).slice(0, 3).map((post) => (
+          <div class="bg-white rounded-2xl border border-slate-200/90 shadow-xs overflow-hidden flex flex-col">
+            <img
+              src={optimizeImageUrlToWebp(post.coverImage)}
+              srcset={buildResponsiveSrcset(post.coverImage)}
+              sizes="(max-width: 768px) 100vw, 33vw"
+              alt={post.coverImageAlt}
+              width="800"
+              height="500"
+              loading="lazy"
+              decoding="async"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-6 flex flex-col flex-grow">
+              <div class="flex items-center gap-2 text-xs text-slate-500 mb-2">
+                <span class="bg-sky-50 text-brand-light font-bold px-2.5 py-0.5 rounded-full">{post.category}</span>
+                <span>&bull;</span>
+                <span>{post.date}</span>
+              </div>
+              <h3 class="text-lg font-extrabold text-slate-900 mb-2 leading-snug">{post.title}</h3>
+              <p class="text-sm text-slate-600 leading-relaxed mb-4 flex-grow">{post.excerpt}</p>
+              <a href={`/blog/${post.slug}`} class="inline-flex items-center gap-1.5 text-sm font-bold text-brand-blue hover:text-brand-light">
+                <span>Leggi la guida</span>
+                <span>&rarr;</span>
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- BANNER CTA FINALE HOMEPAGE -->
+    <section class="pb-16 container mx-auto px-4 lg:px-8">
+      <div class="bg-brand-blue text-white rounded-3xl p-8 sm:p-12 shadow-xl flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+        <div class="space-y-2 max-w-2xl">
+          <h2 class="text-2xl sm:text-3xl font-extrabold">{h.bottomCtaTitle}</h2>
+          <p class="text-blue-100 text-base">{h.bottomCtaText}</p>
+        </div>
+        <div class="shrink-0">
+          <a
+            href={bHref}
+            class="inline-flex items-center justify-center gap-2 bg-brand-green hover:bg-brand-greenHover text-white font-bold px-8 py-4 rounded-xl shadow-lg transition-colors text-base"
+          >
+            <span>{h.bottomCtaLabel}</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </article>
+</BaseLayout>

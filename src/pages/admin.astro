@@ -1,0 +1,641 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import initialSiteData from '../data/siteData.json';
+
+const adminEntity = {
+  h1: 'Accesso Riservato CMS | Idraulico RE',
+  seo: {
+    title: 'Area Riservata CMS | Idraulico RE',
+    description: 'Pannello di amministrazione riservato.',
+    robots: 'noindex, nofollow',
+    canonical: 'https://idraulico-a-reggio-emilia.it/admin'
+  }
+};
+---
+
+<BaseLayout entity={adminEntity} routeContext={{ type: 'page', id: 'admin' }}>
+  <section class="py-12 container mx-auto px-4 lg:px-8">
+    <!-- BOX LOGIN AMMINISTRATORE -->
+    <div id="admin-login-box" class="max-w-md mx-auto bg-white rounded-3xl border border-slate-200 shadow-xl overflow-hidden">
+      <div class="px-6 py-5 bg-brand-blue text-white">
+        <h1 class="text-xl font-extrabold">Accesso Riservato CMS</h1>
+        <p class="text-xs text-blue-200 mt-0.5">Area Amministratore &bull; Idraulico RE</p>
+      </div>
+      <form id="admin-login-form" class="p-6 space-y-4">
+        <div>
+          <label for="login-email" class="block text-xs font-bold text-slate-700 mb-1.5">Email Amministratore</label>
+          <input
+            id="login-email"
+            type="email"
+            required
+            autocomplete="username"
+            placeholder="idraulico.re@gmail.com"
+            class="w-full px-4 py-3 rounded-xl border border-slate-300 text-sm focus:outline-none focus:border-brand-light"
+          />
+        </div>
+        <div>
+          <label for="login-pass" class="block text-xs font-bold text-slate-700 mb-1.5">Password</label>
+          <input
+            id="login-pass"
+            type="password"
+            required
+            autocomplete="current-password"
+            placeholder="Inserisci password..."
+            class="w-full px-4 py-3 rounded-xl border border-slate-300 text-sm focus:outline-none focus:border-brand-light"
+          />
+        </div>
+        <div id="login-error" class="hidden text-xs font-semibold text-amber-900 bg-amber-50 border border-amber-200 px-3.5 py-2.5 rounded-xl"></div>
+        <button
+          type="submit"
+          class="w-full py-3 rounded-xl bg-brand-green hover:bg-brand-greenHover text-white font-bold text-sm shadow-sm transition-colors"
+        >
+          Accedi al CMS
+        </button>
+      </form>
+    </div>
+
+    <!-- PANNELLO CMS COMPLETO (Visibile dopo il login) -->
+    <div id="admin-cms-app" class="hidden space-y-6"></div>
+
+    <!-- TOAST NOTIFICA -->
+    <div id="cms-toast" class="hidden fixed bottom-5 right-5 z-50 bg-slate-900 text-white px-5 py-3.5 rounded-xl shadow-2xl border border-slate-700 text-sm font-medium"></div>
+  </section>
+
+  <script type="application/json" id="initial-site-data" set:html={JSON.stringify(initialSiteData)} />
+
+  <script>
+    const PRESET_LOGOS = [
+      {
+        id: 'logo-chiave-goccia',
+        name: '1. Chiave Inglese & Goccia',
+        desc: 'Scudo blu navy con chiave inglese diagonale e goccia d\'acqua azzurra.',
+        alt: 'Logo Idraulico RE - Chiave inglese e goccia d\'acqua',
+        svg: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none"><rect x="4" y="4" width="56" height="56" rx="16" fill="#1e3a8a"/><rect x="6" y="6" width="52" height="52" rx="14" stroke="#38bdf8" stroke-opacity="0.35" stroke-width="1.5"/><path d="M44.5 15.5a9.5 9.5 0 0 0-12.4 11.4L17.6 41.4a3.5 3.5 0 0 0 5 5l14.5-14.5a9.5 9.5 0 0 0 11.4-12.4l-5.3 5.3-4.2-1.1-1.1-4.2 5.6-4z" fill="#ffffff"/><path d="M45 35c0 0-7 7.8-7 12.2a7 7 0 0 0 14 0C52 42.8 45 35 45 35z" fill="#38bdf8"/><path d="M43 46.5a2.5 2.5 0 0 1-1.5-2.3" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round"/></svg>'
+      },
+      {
+        id: 'logo-giratubi-tubo',
+        name: '2. Giratubi & Tubazione',
+        desc: 'Chiave giratubi professionale che serra un raccordo idraulico con goccia.',
+        alt: 'Logo Idraulico RE - Chiave giratubi e raccordo idraulico',
+        svg: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none"><rect x="4" y="4" width="56" height="56" rx="16" fill="#1e3a8a"/><path d="M12 42h28a6 6 0 0 0 6-6v-3" stroke="#38bdf8" stroke-width="5" stroke-linecap="round"/><rect x="20" y="38" width="6" height="8" rx="1.5" fill="#0284c7"/><path d="M46 16c0 0-4.5 5-4.5 7.8a4.5 4.5 0 0 0 9 0C50.5 21 46 16 46 16z" fill="#38bdf8"/><path d="M22 14h11l3 5-5 4h-6l-4 13h-5l4-15-2-3 4-4z" fill="#ffffff"/><circle cx="26.5" cy="18.5" r="1.6" fill="#1e3a8a"/></svg>'
+      },
+      {
+        id: 'logo-dado-chiave-calore',
+        name: '3. Dado, Chiave & Calore',
+        desc: 'Dado esagonale con chiave inglese, goccia d\'acqua e onda termica caldaie.',
+        alt: 'Logo Idraulico RE - Dado esagonale, chiave e impianti termici',
+        svg: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none"><polygon points="32,4 56,18 56,46 32,60 8,46 8,18" fill="#1e3a8a" stroke="#38bdf8" stroke-width="2"/><path d="M25 18a6.5 6.5 0 0 0-4 11.6V45a2.5 2.5 0 0 0 5 0V29.6A6.5 6.5 0 0 0 25 18zm-1.5 5.5l1.5-1.5 1.5 1.5v3h-3v-3z" fill="#ffffff"/><path d="M41 21c0 0-6.5 7.2-6.5 11.2a6.5 6.5 0 0 0 13 0C47.5 28.2 41 21 41 21z" fill="#38bdf8"/><path d="M35 44c2.5-2.5 5-2.5 7.5 0s5 2.5 7.5 0" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round"/></svg>'
+      },
+      {
+        id: 'logo-valvola-gomito',
+        name: '4. Tubo a Gomito & Valvola',
+        desc: 'Badge chiaro ad alto contrasto con tubazione flangiata e volantino valvola.',
+        alt: 'Logo Idraulico RE - Tubazione idraulica e valvola di intercettazione',
+        svg: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none"><rect x="4" y="4" width="56" height="56" rx="16" fill="#f0f9ff" stroke="#1e3a8a" stroke-width="2.5"/><path d="M16 44V32a8 8 0 0 1 8-8h18" stroke="#1e3a8a" stroke-width="7" stroke-linecap="round"/><rect x="11" y="42" width="10" height="4" rx="1.5" fill="#0284c7"/><rect x="40" y="19" width="4" height="10" rx="1.5" fill="#0284c7"/><path d="M29 14v10M22 14h14" stroke="#0284c7" stroke-width="3.2" stroke-linecap="round"/><path d="M47 33c0 0-5 5.6-5 8.8a5 5 0 0 0 10 0C52 38.6 47 33 47 33z" fill="#0284c7"/></svg>'
+      },
+      {
+        id: 'logo-monogramma-re',
+        name: '5. Monogramma RE & Chiave',
+        desc: 'Emblema moderno con chiave inglese integrata nelle iniziali RE e onda blu.',
+        alt: 'Logo Idraulico RE - Monogramma RE con chiave inglese',
+        svg: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none"><rect x="4" y="4" width="56" height="56" rx="16" fill="#1e3a8a"/><path d="M4 46c14-5 26 5 56-3v1c0 8.8-7.2 16-16 16H20C11.2 60 4 52.8 4 44v2z" fill="#0284c7"/><path d="M16 17a5.5 5.5 0 0 0-3 10.1V41h4.5V31h3.2l4.3 10H30l-4.8-10.6A6.5 6.5 0 0 0 21 18.2l-2.5 2.5-2.5-1.2V17z" fill="#ffffff"/><path d="M34 18h14v4.2h-9.3v4.6h8v4h-8v5.8H48V41H34V18z" fill="#38bdf8"/></svg>'
+      }
+    ];
+
+    function svgToDataUri(svgStr: string) {
+      return 'data:image/svg+xml;utf8,' + encodeURIComponent(String(svgStr || '').trim());
+    }
+
+    function esc(str: any) {
+      return String(str ?? '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
+    function toast(msg: string) {
+      const el = document.getElementById('cms-toast');
+      if (!el) return;
+      el.textContent = msg;
+      el.classList.remove('hidden');
+      setTimeout(() => el.classList.add('hidden'), 3600);
+    }
+
+    const rawJsonEl = document.getElementById('initial-site-data');
+    let draftData = rawJsonEl ? JSON.parse(rawJsonEl.textContent || '{}') : {};
+
+    const state = {
+      tab: 'pages',
+      pageId: 'home',
+      serviceIdx: 0,
+      postIdx: 0,
+      githubToken: localStorage.getItem('idraulico_re_gh_token') || ''
+    };
+
+    function setByPath(pathStr: string, val: any) {
+      const parts = pathStr.split('.');
+      let ref = draftData;
+      for (let i = 0; i < parts.length - 1; i++) {
+        ref = ref[parts[i]];
+      }
+      ref[parts[parts.length - 1]] = val;
+    }
+
+    function encodeUtf8Base64(str: string) {
+      return btoa(unescape(encodeURIComponent(str)));
+    }
+
+    async function upsertGitHubFile(owner: string, repo: string, branch: string, token: string, filePath: string, contentStr: string, commitMessage: string) {
+      const apiUrl = `https://api.github.com/repos/${encodeURIComponent(owner)}/${encodeURIComponent(repo)}/contents/${filePath}`;
+      const headers = {
+        Authorization: `Bearer ${token}`,
+        Accept: 'application/vnd.github+json',
+        'Content-Type': 'application/json'
+      };
+
+      let sha: string | undefined = undefined;
+      const getRes = await fetch(`${apiUrl}?ref=${encodeURIComponent(branch)}`, { headers });
+      if (getRes.ok) {
+        const existing = await getRes.json();
+        sha = existing.sha;
+      }
+
+      const bodyPayload: any = {
+        message: commitMessage,
+        content: encodeUtf8Base64(contentStr),
+        branch
+      };
+      if (sha) bodyPayload.sha = sha;
+
+      const putRes = await fetch(apiUrl, {
+        method: 'PUT',
+        headers,
+        body: JSON.stringify(bodyPayload)
+      });
+
+      if (!putRes.ok) {
+        const errData = await putRes.json().catch(() => ({}));
+        throw new Error(errData.message || `Errore GitHub (${putRes.status})`);
+      }
+    }
+
+    async function publishToGitHub() {
+      const g = draftData.global || {};
+      const owner = String(g.githubOwner || '').trim();
+      const repo = String(g.githubRepo || 'idraulico-reggio-emilia').trim();
+      const branch = String(g.githubBranch || 'main').trim();
+      const token = String(state.githubToken || '').trim();
+
+      if (!owner || !token) {
+        state.tab = 'github';
+        renderCms();
+        toast('Inserisci prima Username GitHub e Token nella scheda "Collegamento GitHub".');
+        return;
+      }
+
+      const pubBtn = document.getElementById('gh-publish-btn') as HTMLButtonElement | null;
+      if (pubBtn) {
+        pubBtn.disabled = true;
+        pubBtn.textContent = 'Pubblicazione su GitHub in corso...';
+      }
+
+      try {
+        await upsertGitHubFile(
+          owner,
+          repo,
+          branch,
+          token,
+          'src/data/siteData.json',
+          JSON.stringify(draftData, null, 2),
+          'Aggiornamento contenuti dal CMS Idraulico RE'
+        );
+
+        const activeRedirects = (Array.isArray(g.redirects) ? g.redirects : [])
+          .filter((r: any) => r && r.enabled !== false && r.from && r.to)
+          .map((r: any) => ({
+            source: r.from.startsWith('/') ? r.from : `/${r.from}`,
+            destination: r.to,
+            permanent: r.statusCode !== '302'
+          }));
+
+        const vercelConfigObj = {
+          cleanUrls: true,
+          trailingSlash: false,
+          redirects: activeRedirects,
+          headers: [
+            {
+              source: '/_astro/(.*)',
+              headers: [{ key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }]
+            }
+          ]
+        };
+
+        await upsertGitHubFile(
+          owner,
+          repo,
+          branch,
+          token,
+          'vercel.json',
+          JSON.stringify(vercelConfigObj, null, 2),
+          'Aggiornamento redirect 301/302 dal CMS'
+        );
+
+        toast('Pubblicato su GitHub! Vercel aggiornerà il sito online entro ~25 secondi.');
+      } catch (err: any) {
+        toast(`Errore pubblicazione: ${err.message}`);
+      } finally {
+        if (pubBtn) {
+          pubBtn.disabled = false;
+          pubBtn.textContent = 'Pubblica Online su GitHub & Vercel';
+        }
+      }
+    }
+
+    function renderCms() {
+      const root = document.getElementById('admin-cms-app');
+      if (!root) return;
+      const g = draftData.global || {};
+      let contentHtml = '';
+
+      if (state.tab === 'pages') {
+        const pageKeys = ['home', 'servizi', 'chiSiamo', 'blog', 'contatti'];
+        const p = draftData.pages[state.pageId] || draftData.pages.home;
+        contentHtml = `
+          <div class="bg-white p-6 rounded-2xl border border-slate-200 space-y-4">
+            <div class="flex flex-wrap gap-2 pb-3 border-b border-slate-100">
+              ${pageKeys.map((k) => (
+                `<button type="button" data-page="${k}" class="cms-page-btn px-3.5 py-2 rounded-xl text-xs font-bold ${state.pageId === k ? 'bg-brand-blue text-white' : 'bg-slate-100 text-slate-700'}">${esc(draftData.pages[k].label)}</button>`
+              )).join('')}
+            </div>
+            <div class="grid md:grid-cols-2 gap-4">
+              <div class="md:col-span-2">
+                <label class="block text-xs font-bold text-slate-700 mb-1">Titolo Principale (H1)</label>
+                <input type="text" data-path="pages.${p.id}.h1" value="${esc(p.h1)}" class="cms-input w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm font-bold" />
+              </div>
+              <div class="md:col-span-2">
+                <label class="block text-xs font-bold text-slate-700 mb-1">Sottotitolo</label>
+                <textarea rows="2" data-path="pages.${p.id}.heroSubtitle" class="cms-input w-full px-3.5 py-2 rounded-xl border border-slate-300 text-sm">${esc(p.heroSubtitle || '')}</textarea>
+              </div>
+              ${p.heroImage !== undefined ? `
+                <div class="md:col-span-2">
+                  <label class="block text-xs font-bold text-slate-700 mb-1">Immagine Principale WebP URL</label>
+                  <input type="text" data-path="pages.${p.id}.heroImage" value="${esc(p.heroImage)}" class="cms-input w-full px-3.5 py-2 rounded-xl border border-slate-300 text-xs font-mono" />
+                </div>
+              ` : ''}
+            </div>
+            <div class="grid md:grid-cols-2 gap-4 pt-2 border-t border-slate-100">
+              <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1">SEO Meta Title</label>
+                <input type="text" data-path="pages.${p.id}.seo.title" value="${esc(p.seo?.title || '')}" class="cms-input w-full px-3.5 py-2 rounded-xl border border-slate-300 text-xs font-semibold" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1">SEO Meta Description</label>
+                <input type="text" data-path="pages.${p.id}.seo.description" value="${esc(p.seo?.description || '')}" class="cms-input w-full px-3.5 py-2 rounded-xl border border-slate-300 text-xs" />
+              </div>
+            </div>
+          </div>
+        `;
+      } else if (state.tab === 'services') {
+        const srv = draftData.services[state.serviceIdx] || draftData.services[0];
+        contentHtml = `
+          <div class="bg-white p-6 rounded-2xl border border-slate-200 space-y-4">
+            <div class="flex flex-wrap gap-2 pb-3 border-b border-slate-100">
+              ${draftData.services.map((s: any, i: number) => (
+                `<button type="button" data-srv="${i}" class="cms-srv-btn px-3.5 py-2 rounded-xl text-xs font-bold ${state.serviceIdx === i ? 'bg-brand-blue text-white' : 'bg-slate-100 text-slate-700'}">${esc(s.shortTitle)}</button>`
+              )).join('')}
+            </div>
+            <div class="grid md:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1">Nome Breve Menu</label>
+                <input type="text" data-path="services.${state.serviceIdx}.shortTitle" value="${esc(srv.shortTitle)}" class="cms-input w-full px-3.5 py-2 rounded-xl border border-slate-300 text-sm font-bold" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1">Slug URL (/servizi/...)</label>
+                <input type="text" data-path="services.${state.serviceIdx}.slug" value="${esc(srv.slug)}" class="cms-input w-full px-3.5 py-2 rounded-xl border border-slate-300 text-xs font-mono" />
+              </div>
+              <div class="md:col-span-2">
+                <label class="block text-xs font-bold text-slate-700 mb-1">Titolo Pagina Servizio (H1)</label>
+                <input type="text" data-path="services.${state.serviceIdx}.h1" value="${esc(srv.h1)}" class="cms-input w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm font-bold" />
+              </div>
+              <div class="md:col-span-2">
+                <label class="block text-xs font-bold text-slate-700 mb-1">Sottotitolo Servizio</label>
+                <textarea rows="2" data-path="services.${state.serviceIdx}.subtitle" class="cms-input w-full px-3.5 py-2 rounded-xl border border-slate-300 text-sm">${esc(srv.subtitle || '')}</textarea>
+              </div>
+              <div class="md:col-span-2">
+                <label class="block text-xs font-bold text-slate-700 mb-1">Immagine WebP URL</label>
+                <input type="text" data-path="services.${state.serviceIdx}.image" value="${esc(srv.image)}" class="cms-input w-full px-3.5 py-2 rounded-xl border border-slate-300 text-xs font-mono" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1">SEO Meta Title</label>
+                <input type="text" data-path="services.${state.serviceIdx}.seo.title" value="${esc(srv.seo?.title || '')}" class="cms-input w-full px-3.5 py-2 rounded-xl border border-slate-300 text-xs font-semibold" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1">SEO Meta Description</label>
+                <input type="text" data-path="services.${state.serviceIdx}.seo.description" value="${esc(srv.seo?.description || '')}" class="cms-input w-full px-3.5 py-2 rounded-xl border border-slate-300 text-xs" />
+              </div>
+            </div>
+          </div>
+        `;
+      } else if (state.tab === 'posts') {
+        const post = draftData.posts[state.postIdx] || draftData.posts[0];
+        contentHtml = `
+          <div class="bg-white p-6 rounded-2xl border border-slate-200 space-y-4">
+            <div class="flex flex-wrap gap-2 pb-3 border-b border-slate-100">
+              ${draftData.posts.map((pt: any, i: number) => (
+                `<button type="button" data-post="${i}" class="cms-post-btn px-3.5 py-2 rounded-xl text-xs font-bold ${state.postIdx === i ? 'bg-brand-blue text-white' : 'bg-slate-100 text-slate-700'}">${esc(pt.title.slice(0, 36))}...</button>`
+              )).join('')}
+            </div>
+            <div class="grid md:grid-cols-2 gap-4">
+              <div class="md:col-span-2">
+                <label class="block text-xs font-bold text-slate-700 mb-1">Titolo Articolo (H1)</label>
+                <input type="text" data-path="posts.${state.postIdx}.title" value="${esc(post.title)}" class="cms-input w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm font-bold" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1">Slug URL (/blog/...)</label>
+                <input type="text" data-path="posts.${state.postIdx}.slug" value="${esc(post.slug)}" class="cms-input w-full px-3.5 py-2 rounded-xl border border-slate-300 text-xs font-mono" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1">Categoria</label>
+                <input type="text" data-path="posts.${state.postIdx}.category" value="${esc(post.category)}" class="cms-input w-full px-3.5 py-2 rounded-xl border border-slate-300 text-xs" />
+              </div>
+              <div class="md:col-span-2">
+                <label class="block text-xs font-bold text-slate-700 mb-1">Estratto Articolo</label>
+                <textarea rows="2" data-path="posts.${state.postIdx}.excerpt" class="cms-input w-full px-3.5 py-2 rounded-xl border border-slate-300 text-xs">${esc(post.excerpt || '')}</textarea>
+              </div>
+              <div class="md:col-span-2">
+                <label class="block text-xs font-bold text-slate-700 mb-1">Immagine Copertina WebP URL</label>
+                <input type="text" data-path="posts.${state.postIdx}.coverImage" value="${esc(post.coverImage || '')}" class="cms-input w-full px-3.5 py-2 rounded-xl border border-slate-300 text-xs font-mono" />
+              </div>
+            </div>
+          </div>
+        `;
+      } else if (state.tab === 'logo') {
+        contentHtml = `
+          <div class="bg-white p-6 rounded-2xl border border-slate-200 space-y-5">
+            <h2 class="text-lg font-extrabold text-brand-blue">Logo Aziendale &amp; 5 Proposte SVG Pronte</h2>
+            <div class="grid md:grid-cols-3 gap-4">
+              <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1">Modalità Logo</label>
+                <select data-path="global.logoMode" class="cms-input w-full px-3.5 py-2 rounded-xl border border-slate-300 text-xs font-bold bg-white">
+                  <option value="iconAndText" ${g.logoMode === 'iconAndText' ? 'selected' : ''}>Icona + Testo</option>
+                  <option value="imageAndText" ${g.logoMode === 'imageAndText' ? 'selected' : ''}>Immagine Logo + Testo</option>
+                  <option value="imageOnly" ${g.logoMode === 'imageOnly' ? 'selected' : ''}>Solo Immagine Logo</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1">Testo Parte 1</label>
+                <input type="text" data-path="global.brandPrefix" value="${esc(g.brandPrefix)}" class="cms-input w-full px-3.5 py-2 rounded-xl border border-slate-300 text-sm font-bold" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1">Testo Parte 2</label>
+                <input type="text" data-path="global.brandSuffix" value="${esc(g.brandSuffix)}" class="cms-input w-full px-3.5 py-2 rounded-xl border border-slate-300 text-sm font-bold" />
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
+              ${PRESET_LOGOS.map((preset) => `
+                <div class="bg-slate-50 rounded-2xl p-3.5 border border-slate-200 flex flex-col justify-between gap-3">
+                  <div class="space-y-2">
+                    <div class="w-14 h-14 rounded-xl bg-white border border-slate-200 flex items-center justify-center p-1.5">${preset.svg}</div>
+                    <div class="text-xs font-extrabold text-slate-900">${esc(preset.name)}</div>
+                    <p class="text-[11px] text-slate-500">${esc(preset.desc)}</p>
+                  </div>
+                  <button type="button" data-preset="${preset.id}" class="cms-preset-logo-btn w-full py-2 px-3 rounded-xl bg-brand-blue hover:bg-blue-800 text-white text-xs font-bold">
+                    Scegli questo Logo
+                  </button>
+                </div>
+              `).join('')}
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-slate-700 mb-1">URL Immagine Logo Personalizzata (WebP / SVG)</label>
+              <input type="text" data-path="global.logoImageUrl" value="${esc(g.logoImageUrl || '')}" class="cms-input w-full px-3.5 py-2 rounded-xl border border-slate-300 text-xs font-mono" />
+            </div>
+          </div>
+        `;
+      } else if (state.tab === 'redirects') {
+        const list = Array.isArray(g.redirects) ? g.redirects : [];
+        contentHtml = `
+          <div class="bg-white p-6 rounded-2xl border border-slate-200 space-y-4">
+            <div class="flex justify-between items-center">
+              <div>
+                <h2 class="text-lg font-extrabold text-brand-blue">Redirect 301 / 302 (Edge Vercel)</h2>
+                <p class="text-xs text-slate-500">Quando clicchi "Pubblica Online su GitHub &amp; Vercel", queste regole vengono scritte direttamente in <code>vercel.json</code>.</p>
+              </div>
+              <button type="button" id="add-redir-btn" class="bg-brand-green text-white text-xs font-bold px-4 py-2 rounded-xl">+ Aggiungi Redirect</button>
+            </div>
+            <div class="space-y-2.5">
+              ${list.map((r: any, idx: number) => `
+                <div class="grid sm:grid-cols-12 gap-2.5 items-center bg-slate-50 p-3 rounded-xl border border-slate-200">
+                  <input type="text" data-path="global.redirects.${idx}.from" value="${esc(r.from)}" placeholder="/vecchio-url" class="cms-input sm:col-span-5 px-3 py-2 rounded-lg border border-slate-300 bg-white text-xs font-mono" />
+                  <input type="text" data-path="global.redirects.${idx}.to" value="${esc(r.to)}" placeholder="/servizi/nuovo-url" class="cms-input sm:col-span-5 px-3 py-2 rounded-lg border border-slate-300 bg-white text-xs font-mono" />
+                  <button type="button" data-del-redir="${idx}" class="cms-del-redir sm:col-span-2 px-3 py-2 rounded-lg bg-amber-100 text-amber-900 text-xs font-bold">Elimina</button>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        `;
+      } else if (state.tab === 'company') {
+        contentHtml = `
+          <div class="bg-white p-6 rounded-2xl border border-slate-200 space-y-4">
+            <h2 class="text-lg font-extrabold text-brand-blue">Dati Aziendali, Contatti &amp; Footer</h2>
+            <div class="grid md:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1">Telefono Visibile</label>
+                <input type="text" data-path="global.phoneDisplay" value="${esc(g.phoneDisplay || '')}" class="cms-input w-full px-3.5 py-2 rounded-xl border border-slate-300 text-xs font-bold" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1">Testo Pulsante CTA</label>
+                <input type="text" data-path="global.ctaLabel" value="${esc(g.ctaLabel || '')}" class="cms-input w-full px-3.5 py-2 rounded-xl border border-slate-300 text-xs font-bold" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1">Email Pubblica</label>
+                <input type="email" data-path="global.email" value="${esc(g.email || '')}" class="cms-input w-full px-3.5 py-2 rounded-xl border border-slate-300 text-xs" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1">Email Ricezione Modulo Contatti</label>
+                <input type="email" data-path="global.contactRecipientEmail" value="${esc(g.contactRecipientEmail || 'idraulico.re@gmail.com')}" class="cms-input w-full px-3.5 py-2 rounded-xl border border-slate-300 text-xs font-mono" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1">Indirizzo Sede</label>
+                <input type="text" data-path="global.address" value="${esc(g.address || '')}" class="cms-input w-full px-3.5 py-2 rounded-xl border border-slate-300 text-xs" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1">Orari</label>
+                <input type="text" data-path="global.hours" value="${esc(g.hours || '')}" class="cms-input w-full px-3.5 py-2 rounded-xl border border-slate-300 text-xs" />
+              </div>
+            </div>
+          </div>
+        `;
+      } else if (state.tab === 'github') {
+        contentHtml = `
+          <div class="bg-white p-6 rounded-2xl border border-slate-200 space-y-4">
+            <h2 class="text-lg font-extrabold text-brand-blue">Collegamento Automatico GitHub &amp; Vercel</h2>
+            <p class="text-xs text-slate-600">Inserisci una sola volta i dati del tuo repository GitHub: il token resta salvato solo nel tuo browser.</p>
+            <div class="grid md:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1">Username GitHub (Owner)</label>
+                <input type="text" data-path="global.githubOwner" value="${esc(g.githubOwner || '')}" placeholder="Es. mario-rossi" class="cms-input w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-xs font-mono" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1">Nome Repository GitHub</label>
+                <input type="text" data-path="global.githubRepo" value="${esc(g.githubRepo || 'idraulico-reggio-emilia')}" class="cms-input w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-xs font-mono" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1">Branch (solitamente main)</label>
+                <input type="text" data-path="global.githubBranch" value="${esc(g.githubBranch || 'main')}" class="cms-input w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-xs font-mono" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1">GitHub Fine-Grained Token (github_pat_...)</label>
+                <input id="gh-token-input" type="password" value="${esc(state.githubToken)}" placeholder="github_pat_..." class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-xs font-mono" />
+              </div>
+            </div>
+          </div>
+        `;
+      }
+
+      root.innerHTML = `
+        <div class="bg-brand-blue text-white rounded-3xl p-6 sm:p-8 shadow-lg flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div>
+            <div class="text-xs font-bold uppercase tracking-wider text-sky-300">Astro.js Static Multi-Page CMS</div>
+            <h1 class="text-2xl sm:text-3xl font-extrabold mt-1">Pannello di Gestione Idraulico RE</h1>
+          </div>
+          <div class="flex flex-wrap items-center gap-2.5">
+            <button type="button" id="gh-publish-btn" class="bg-brand-green hover:bg-brand-greenHover text-white font-extrabold px-5 py-3 rounded-xl text-xs sm:text-sm shadow-md">
+              Pubblica Online su GitHub &amp; Vercel
+            </button>
+            <a href="/" class="bg-white/15 hover:bg-white/25 text-white font-bold px-4 py-3 rounded-xl text-xs sm:text-sm">
+              Vedi Sito Pubblico &rarr;
+            </a>
+            <button type="button" id="cms-logout-btn" class="bg-slate-900/60 hover:bg-slate-900 text-slate-200 font-bold px-4 py-3 rounded-xl text-xs sm:text-sm">
+              Esci
+            </button>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap gap-2">
+          ${[
+            { id: 'pages', label: 'Pagine Fisse' },
+            { id: 'services', label: 'Pagine Servizio' },
+            { id: 'posts', label: 'Articoli Blog' },
+            { id: 'logo', label: 'Logo & 5 Varianti' },
+            { id: 'redirects', label: 'Redirect 301/302' },
+            { id: 'company', label: 'Azienda & Contatti' },
+            { id: 'github', label: 'Collegamento GitHub' }
+          ].map((t) => (
+            `<button type="button" data-tab="${t.id}" class="cms-tab-btn px-4 py-2.5 rounded-xl text-xs font-bold ${state.tab === t.id ? 'bg-brand-blue text-white' : 'bg-white text-slate-700 border border-slate-200'}">${t.label}</button>`
+          )).join('')}
+        </div>
+
+        ${contentHtml}
+      `;
+
+      root.querySelectorAll('.cms-tab-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          state.tab = (btn as HTMLElement).dataset.tab || 'pages';
+          renderCms();
+        });
+      });
+
+      root.querySelectorAll('.cms-page-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          state.pageId = (btn as HTMLElement).dataset.page || 'home';
+          renderCms();
+        });
+      });
+
+      root.querySelectorAll('.cms-srv-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          state.serviceIdx = Number((btn as HTMLElement).dataset.srv || 0);
+          renderCms();
+        });
+      });
+
+      root.querySelectorAll('.cms-post-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          state.postIdx = Number((btn as HTMLElement).dataset.post || 0);
+          renderCms();
+        });
+      });
+
+      root.querySelectorAll('.cms-input').forEach((inp) => {
+        inp.addEventListener('input', () => {
+          const el = inp as HTMLInputElement;
+          const p = el.dataset.path;
+          if (p) setByPath(p, el.value);
+        });
+      });
+
+      root.querySelectorAll('.cms-preset-logo-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const preset = PRESET_LOGOS.find((p) => p.id === (btn as HTMLElement).dataset.preset);
+          if (!preset) return;
+          draftData.global.logoImageUrl = svgToDataUri(preset.svg);
+          draftData.global.logoImageAlt = preset.alt;
+          if (draftData.global.logoMode === 'iconAndText') draftData.global.logoMode = 'imageAndText';
+          renderCms();
+          toast(`Logo "${preset.name}" selezionato!`);
+        });
+      });
+
+      document.getElementById('add-redir-btn')?.addEventListener('click', () => {
+        if (!Array.isArray(draftData.global.redirects)) draftData.global.redirects = [];
+        draftData.global.redirects.push({ from: '/vecchio-url', to: '/servizi', statusCode: '301', enabled: true });
+        renderCms();
+      });
+
+      root.querySelectorAll('.cms-del-redir').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const idx = Number((btn as HTMLElement).dataset.delRedir);
+          draftData.global.redirects.splice(idx, 1);
+          renderCms();
+        });
+      });
+
+      document.getElementById('gh-token-input')?.addEventListener('input', (e) => {
+        state.githubToken = (e.target as HTMLInputElement).value;
+        localStorage.setItem('idraulico_re_gh_token', state.githubToken);
+      });
+
+      document.getElementById('gh-publish-btn')?.addEventListener('click', publishToGitHub);
+
+      document.getElementById('cms-logout-btn')?.addEventListener('click', () => {
+        sessionStorage.removeItem('idraulico_re_admin_auth');
+        window.location.href = '/';
+      });
+    }
+
+    const loginForm = document.getElementById('admin-login-form');
+    const loginBox = document.getElementById('admin-login-box');
+    const cmsApp = document.getElementById('admin-cms-app');
+    const loginErr = document.getElementById('login-error');
+
+    if (sessionStorage.getItem('idraulico_re_admin_auth') === '1' && loginBox && cmsApp) {
+      loginBox.classList.add('hidden');
+      cmsApp.classList.remove('hidden');
+      renderCms();
+    }
+
+    if (loginForm) {
+      loginForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const email = ((document.getElementById('login-email') as HTMLInputElement)?.value || '').trim().toLowerCase();
+        const pass = ((document.getElementById('login-pass') as HTMLInputElement)?.value || '').trim();
+        const validEmail = String(draftData.global?.adminEmail || 'idraulico.re@gmail.com').trim().toLowerCase();
+        const validPass = String(draftData.global?.adminPassword || 'Reggio2026!').trim();
+
+        if (email === validEmail && pass === validPass) {
+          sessionStorage.setItem('idraulico_re_admin_auth', '1');
+          loginBox?.classList.add('hidden');
+          cmsApp?.classList.remove('hidden');
+          renderCms();
+        } else if (loginErr) {
+          loginErr.textContent = 'Credenziali non valide. Verifica email e password amministratore.';
+          loginErr.classList.remove('hidden');
+        }
+      });
+    }
+  </script>
+</BaseLayout>

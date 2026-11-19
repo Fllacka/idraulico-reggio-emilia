@@ -1,0 +1,902 @@
+{
+  "global": {
+    "domain": "https://idraulico-a-reggio-emilia.it",
+    "businessName": "Idraulico RE - Impianti e Termoidraulica",
+    "legalName": "Idraulico RE S.r.l.",
+    "brandPrefix": "Idraulico",
+    "brandSuffix": "RE",
+    "logoMode": "iconAndText",
+    "logoImageUrl": "",
+    "logoImageAlt": "Logo Idraulico RE - Impianti e Termoidraulica Reggio Emilia",
+    "logoHeightPx": 40,
+    "showLogoInFooter": true,
+    "phoneDisplay": "+39 0522 000000",
+    "phoneHref": "tel:+390522000000",
+    "ctaLabel": "Chiamaci +39 0522 000000",
+    "ctaHref": "tel:+390522000000",
+    "email": "info@idraulico-a-reggio-emilia.it",
+    "contactRecipientEmail": "idraulico.re@gmail.com",
+    "streetAddress": "Via Esempio, 12",
+    "postalCode": "42121",
+    "locality": "Reggio Emilia",
+    "regionCode": "EMR",
+    "address": "Via Esempio, 12 - 42121 Reggio Emilia (RE)",
+    "hours": "Lun - Ven: 08:30 - 18:30 (su appuntamento)",
+    "openingDaysSchema": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "opensTime": "08:30",
+    "closesTime": "18:30",
+    "priceRange": "€€",
+    "piva": "01234567890",
+    "footerTagline": "Specialisti in impianti residenziali, caldaie e rifacimento bagni a Reggio Emilia e provincia.",
+    "headerLogoHref": "/",
+    "headerDropdownAllLabel": "Tutti i Servizi (Hub)",
+    "headerNav": [
+      {
+        "id": "hnav-1",
+        "label": "Home",
+        "href": "/",
+        "showServicesDropdown": false
+      },
+      {
+        "id": "hnav-2",
+        "label": "Servizi",
+        "href": "/servizi",
+        "showServicesDropdown": true
+      },
+      {
+        "id": "hnav-3",
+        "label": "Chi Siamo",
+        "href": "/chi-siamo",
+        "showServicesDropdown": false
+      },
+      {
+        "id": "hnav-4",
+        "label": "Blog",
+        "href": "/blog",
+        "showServicesDropdown": false
+      },
+      {
+        "id": "hnav-5",
+        "label": "Contatti",
+        "href": "/contatti",
+        "showServicesDropdown": false
+      }
+    ],
+    "footerCol2Title": "Navigazione",
+    "footerNavLinks": [
+      {
+        "id": "fnav-1",
+        "label": "Home",
+        "href": "/"
+      },
+      {
+        "id": "fnav-2",
+        "label": "Servizi Idraulici",
+        "href": "/servizi"
+      },
+      {
+        "id": "fnav-3",
+        "label": "Chi Siamo",
+        "href": "/chi-siamo"
+      },
+      {
+        "id": "fnav-4",
+        "label": "Blog & Guide",
+        "href": "/blog"
+      },
+      {
+        "id": "fnav-5",
+        "label": "Contatti e Preventivi",
+        "href": "/contatti"
+      }
+    ],
+    "footerCol3Title": "Servizi a Reggio Emilia",
+    "footerCol4Title": "Sede e Contatti",
+    "footerCtaLabel": "Chiamaci +39 0522 000000",
+    "footerCtaHref": "tel:+390522000000",
+    "footerCopyright": "© 2026 Idraulico RE - Impianti e Termoidraulica - Reggio Emilia e Provincia.",
+    "footerBottomNote": "Operativi a Reggio Emilia, Scandiano, Correggio, Guastalla, Rubiera e Casalgrande.",
+    "adminEmail": "idraulico.re@gmail.com",
+    "adminPassword": "Reggio2026!",
+    "githubOwner": "",
+    "githubRepo": "idraulico-reggio-emilia",
+    "githubBranch": "main",
+    "redirects": [],
+    "defaultGeoRegion": "IT-RE",
+    "defaultGeoPlacename": "Reggio Emilia",
+    "defaultLatitude": "44.6989",
+    "defaultLongitude": "10.6297",
+    "serviceRadiusMeters": 35000,
+    "areaServed": [
+      "Reggio Emilia",
+      "Scandiano",
+      "Correggio",
+      "Guastalla",
+      "Rubiera",
+      "Casalgrande",
+      "Castellarano",
+      "Novellara",
+      "Montecchio Emilia",
+      "Sant'Ilario d'Enza"
+    ],
+    "knowsAbout": [
+      "Impianti idraulici residenziali",
+      "Rifacimento bagno chiavi in mano",
+      "Installazione caldaie a condensazione",
+      "Pompe di calore ibride",
+      "Riscaldamento a pavimento",
+      "Addolcitori acqua e trattamento calcare",
+      "Dichiarazione di conformità DM 37/08"
+    ],
+    "sameAs": [
+      "https://www.google.com/maps?q=Reggio+Emilia"
+    ]
+  },
+  "pages": {
+    "home": {
+      "id": "home",
+      "label": "Homepage",
+      "slug": "",
+      "heroEyebrow": "Reggio Emilia e Provincia • Interventi Programmati",
+      "h1": "Idraulico a Reggio Emilia: Impianti Certificati, Caldaie e Rifacimento Bagni",
+      "heroSubtitle": "Affidabilità, puntualità e preventivi chiari per la tua casa a Reggio Emilia. Lavoriamo su appuntamento con materiali di prima scelta e certificazione di conformità.",
+      "heroPrimaryCtaLabel": "Chiamaci +39 0522 000000",
+      "heroPrimaryCtaHref": "tel:+390522000000",
+      "heroSecondaryCtaLabel": "Richiedi un Preventivo",
+      "heroSecondaryCtaHref": "/contatti",
+      "heroImage": "https://images.unsplash.com/photo-1581094288338-2314dddb7ece?auto=format&fit=crop&w=1200&q=80&fm=webp",
+      "heroImageAlt": "Tecnico idraulico professionista a Reggio Emilia",
+      "servicesSectionTitle": "I Nostri Servizi Idraulici Residenziali",
+      "servicesSectionSubtitle": "Dalla manutenzione programmata alla ristrutturazione completa: scopri come possiamo aiutarti nella tua abitazione in provincia di Reggio Emilia.",
+      "servicesHubCtaLabel": "Esplora tutti i servizi",
+      "servicesHubCtaHref": "/servizi",
+      "aboutSectionEyebrow": "La nostra azienda",
+      "aboutSectionTitle": "Precisione artigianale e rispetto per la tua casa",
+      "aboutSectionText": "Operiamo esclusivamente a Reggio Emilia e provincia, garantendo sopralluoghi accurati, tempi certi e massima pulizia in cantiere. Ogni impianto viene collaudato e consegnato con dichiarazione di conformità secondo il DM 37/08.",
+      "aboutSectionPoints": [
+        "Preventivi dettagliati prima di iniziare ogni lavoro",
+        "Tecnici abilitati e aggiornamento continuo sulle normative",
+        "Assistenza completa da Reggio Emilia fino a Guastalla e Scandiano"
+      ],
+      "aboutSectionImage": "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=1000&q=80&fm=webp",
+      "aboutSectionImageAlt": "Squadra tecnica Idraulico RE a Reggio Emilia",
+      "aboutSectionCtaLabel": "Scopri Chi Siamo",
+      "aboutSectionCtaHref": "/chi-siamo",
+      "blogSectionTitle": "Guide e Consigli dal Nostro Blog",
+      "blogSectionSubtitle": "Approfondimenti tecnici scritti dai nostri idraulici per aiutarti a risparmiare energia e mantenere efficienti gli impianti di casa.",
+      "blogSectionCtaLabel": "Leggi tutte le guide nel Blog",
+      "blogSectionCtaHref": "/blog",
+      "bottomCtaTitle": "Hai bisogno di un idraulico di fiducia a Reggio Emilia?",
+      "bottomCtaText": "Parla direttamente con un nostro tecnico per fissare un sopralluogo o ricevere una consulenza sul tuo impianto.",
+      "bottomCtaLabel": "Chiamaci +39 0522 000000",
+      "bottomCtaHref": "tel:+390522000000",
+      "seo": {
+        "title": "Idraulico a Reggio Emilia | Impianti, Caldaie e Rifacimento Bagni",
+        "description": "Idraulico a Reggio Emilia e provincia. Interventi su appuntamento per rifacimento bagno, caldaie a condensazione, riparazioni e impianti residenziali certificati.",
+        "keywords": "idraulico reggio emilia, idraulico provincia reggio emilia, rifacimento bagno reggio emilia, installazione caldaie reggio emilia",
+        "canonical": "https://idraulico-a-reggio-emilia.it/",
+        "robots": "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
+        "ogType": "website",
+        "ogTitle": "Idraulico a Reggio Emilia | Servizi Idraulici Residenziali",
+        "ogDescription": "Interventi programmati, preventivi trasparenti e impianti certificati a Reggio Emilia e provincia.",
+        "ogImage": "https://images.unsplash.com/photo-1581094288338-2314dddb7ece?auto=format&fit=crop&w=1200&q=80&fm=webp",
+        "geoRegion": "IT-RE",
+        "geoPlacename": "Reggio Emilia",
+        "geoPosition": "44.6989;10.6297",
+        "changefreq": "weekly",
+        "priority": "1.0",
+        "customJsonLdMode": "merge",
+        "customJsonLd": ""
+      }
+    },
+    "servizi": {
+      "id": "servizi",
+      "label": "Servizi (Hub)",
+      "slug": "servizi",
+      "h1": "Servizi Idraulici a Reggio Emilia e Provincia",
+      "heroSubtitle": "Scegli l'area di intervento di cui hai bisogno per approfondire le nostre soluzioni tecniche oppure contattaci direttamente per fissare un appuntamento.",
+      "rowDetailCtaLabel": "Scopri i dettagli",
+      "rowCallCtaLabel": "Chiamaci +39 0522 000000",
+      "rowCallCtaHref": "tel:+390522000000",
+      "blocks": [
+        {
+          "id": "srv-hub-b1",
+          "type": "geoBox",
+          "title": "Copertura Territoriale e Modalità di Intervento",
+          "text": "Tutti i servizi elencati di seguito sono erogati su appuntamento a Reggio Emilia città e nei principali comuni della provincia (Scandiano, Correggio, Guastalla, Rubiera, Casalgrande). Puoi anche contattarci nella sezione [Contatti e Preventivi](/contatti) per inviare planimetrie o foto."
+        }
+      ],
+      "faqs": [
+        {
+          "question": "In quali comuni della provincia di Reggio Emilia operate?",
+          "answer": "Operiamo regolarmente a Reggio Emilia città, Scandiano, Correggio, Guastalla, Rubiera, Casalgrande, Castellarano, Novellara, Montecchio Emilia e Sant'Ilario d'Enza."
+        },
+        {
+          "question": "Rilasciate la dichiarazione di conformità sugli impianti?",
+          "answer": "Sì, al termine di ogni installazione o rifacimento impianto rilasciamo regolare Dichiarazione di Conformità ai sensi del DM 37/08."
+        }
+      ],
+      "seo": {
+        "title": "Servizi Idraulici a Reggio Emilia | Caldaie, Bagni e Impianti",
+        "description": "Scopri tutti i servizi idraulici residenziali a Reggio Emilia: riparazioni idrauliche programmate, installazione caldaie, rifacimento bagno e impianti.",
+        "keywords": "servizi idraulici reggio emilia, riparazioni idrauliche reggio emilia, caldaie reggio emilia, rifacimento bagno",
+        "canonical": "https://idraulico-a-reggio-emilia.it/servizi",
+        "robots": "index, follow",
+        "ogType": "website",
+        "ogTitle": "Servizi Idraulici Residenziali a Reggio Emilia",
+        "ogDescription": "Panoramica completa dei nostri servizi idraulici a Reggio Emilia e provincia.",
+        "ogImage": "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1200&q=80&fm=webp",
+        "geoRegion": "IT-RE",
+        "geoPlacename": "Reggio Emilia",
+        "geoPosition": "44.6989;10.6297",
+        "changefreq": "weekly",
+        "priority": "0.9",
+        "customJsonLdMode": "merge",
+        "customJsonLd": ""
+      }
+    },
+    "chiSiamo": {
+      "id": "chiSiamo",
+      "label": "Chi Siamo",
+      "slug": "chi-siamo",
+      "h1": "Chi Siamo: Il Tuo Idraulico di Fiducia a Reggio Emilia",
+      "heroSubtitle": "Oltre vent'anni di esperienza nella progettazione, installazione e manutenzione di impianti idrotermosanitari residenziali nella provincia reggiana.",
+      "heroImage": "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=1200&q=80&fm=webp",
+      "heroImageAlt": "Team Idraulico RE a Reggio Emilia",
+      "blocks": [
+        {
+          "id": "about-b1",
+          "type": "h2",
+          "text": "Un metodo di lavoro basato su chiarezza e competenza"
+        },
+        {
+          "id": "about-b2",
+          "type": "lead",
+          "text": "Siamo nati a Reggio Emilia con un obiettivo preciso: offrire alle famiglie un punto di riferimento stabile, puntuale e trasparente per tutto ciò che riguarda l'acqua e il riscaldamento domestico."
+        },
+        {
+          "id": "about-b3",
+          "type": "paragraph",
+          "text": "Che si tratti di sostituire una rubinetteria, installare una caldaia ad alta efficienza o coordinare il [rifacimento completo del bagno](/servizi/rifacimento-bagno), affrontiamo ogni intervento con sopralluogo tecnico preliminare e preventivo scritto voce per voce."
+        },
+        {
+          "id": "about-b4",
+          "type": "h2",
+          "text": "I nostri standard qualitativi"
+        },
+        {
+          "id": "about-b5",
+          "type": "list",
+          "listType": "bullet",
+          "items": [
+            "Puntualità negli appuntamenti e rispetto degli ambienti domestici",
+            "Utilizzo esclusivo di componentistica certificata dei migliori marchi",
+            "Rilascio della Dichiarazione di Conformità (DM 37/08) e libretti d'impianto",
+            "Consulenza su detrazioni fiscali e risparmio energetico"
+          ]
+        },
+        {
+          "id": "about-b6",
+          "type": "ctaInline",
+          "title": "Vuoi conoscerci e valutare un intervento nella tua abitazione?",
+          "text": "Chiamaci per fissare un sopralluogo conoscitivo a Reggio Emilia o nei comuni limitrofi.",
+          "buttonLabel": "Chiamaci +39 0522 000000",
+          "buttonHref": "tel:+390522000000"
+        }
+      ],
+      "faqs": [],
+      "seo": {
+        "title": "Chi Siamo | Idraulico RE - Tecnici Qualificati a Reggio Emilia",
+        "description": "Conosci il team di Idraulico RE: esperienza ventennale, trasparenza nei preventivi e impianti certificati a Reggio Emilia e provincia.",
+        "keywords": "chi siamo idraulico reggio emilia, azienda idraulica reggio emilia, termoidraulica reggio emilia",
+        "canonical": "https://idraulico-a-reggio-emilia.it/chi-siamo",
+        "robots": "index, follow",
+        "ogType": "website",
+        "ogTitle": "Chi Siamo | Idraulico RE a Reggio Emilia",
+        "ogDescription": "Specialisti in impianti idraulici residenziali, caldaie e bagni a Reggio Emilia.",
+        "ogImage": "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=1200&q=80&fm=webp",
+        "geoRegion": "IT-RE",
+        "geoPlacename": "Reggio Emilia",
+        "geoPosition": "44.6989;10.6297",
+        "changefreq": "monthly",
+        "priority": "0.7",
+        "customJsonLdMode": "merge",
+        "customJsonLd": ""
+      }
+    },
+    "blog": {
+      "id": "blog",
+      "label": "Blog (Hub)",
+      "slug": "blog",
+      "h1": "Blog & Guide Idrauliche per la Casa a Reggio Emilia",
+      "heroSubtitle": "Consigli pratici, approfondimenti normativi e soluzioni per migliorare il comfort e ridurre i consumi della tua abitazione.",
+      "ctaTitle": "Preferisci un parere diretto sul tuo impianto?",
+      "ctaText": "I nostri tecnici sono a disposizione telefonicamente per consigliarti la soluzione più adatta alla tua casa a Reggio Emilia.",
+      "ctaLabel": "Chiamaci +39 0522 000000",
+      "ctaHref": "tel:+390522000000",
+      "seo": {
+        "title": "Blog Idraulico & Guide Casa | Idraulico RE Reggio Emilia",
+        "description": "Articoli tecnici e guide pratiche su caldaie, calcare nell'acqua di Reggio Emilia, riscaldamento e ristrutturazione bagno.",
+        "keywords": "blog idraulico, guide riscaldamento, calcare reggio emilia, manutenzione caldaia",
+        "canonical": "https://idraulico-a-reggio-emilia.it/blog",
+        "robots": "index, follow",
+        "ogType": "website",
+        "ogTitle": "Blog & Guide Tecniche | Idraulico RE",
+        "ogDescription": "Approfondimenti su riscaldamento, trattamento acqua e impianti idraulici.",
+        "ogImage": "https://images.unsplash.com/photo-1585704032915-c3400ca199e7?auto=format&fit=crop&w=1200&q=80&fm=webp",
+        "geoRegion": "IT-RE",
+        "geoPlacename": "Reggio Emilia",
+        "geoPosition": "44.6989;10.6297",
+        "changefreq": "weekly",
+        "priority": "0.8",
+        "customJsonLdMode": "merge",
+        "customJsonLd": ""
+      }
+    },
+    "contatti": {
+      "id": "contatti",
+      "label": "Contatti",
+      "slug": "contatti",
+      "h1": "Contatta il Tuo Idraulico a Reggio Emilia",
+      "heroSubtitle": "Pianifica un appuntamento o richiedi un preventivo senza impegno per lavori idraulici, caldaie e ristrutturazione bagni in tutta la provincia.",
+      "infoBoxTitle": "Pianifica un intervento su appuntamento",
+      "infoBoxText": "Lavoriamo su appuntamento programmato per garantire ad ogni cliente la massima attenzione, puntualità e tempi di esecuzione certi.",
+      "ctaLabel": "Chiamaci +39 0522 000000",
+      "ctaHref": "tel:+390522000000",
+      "seo": {
+        "title": "Contatti e Preventivi | Idraulico a Reggio Emilia",
+        "description": "Contatta Idraulico RE a Reggio Emilia. Chiama il +39 0522 000000 o compila il modulo per richiedere un preventivo per impianti, caldaie e bagni.",
+        "keywords": "contatti idraulico reggio emilia, preventivo idraulico reggio emilia, telefono idraulico reggio emilia",
+        "canonical": "https://idraulico-a-reggio-emilia.it/contatti",
+        "robots": "index, follow",
+        "ogType": "website",
+        "ogTitle": "Contatta Idraulico RE | Reggio Emilia",
+        "ogDescription": "Prenota un sopralluogo o chiedi un preventivo per la tua casa a Reggio Emilia.",
+        "ogImage": "https://images.unsplash.com/photo-1581094288338-2314dddb7ece?auto=format&fit=crop&w=1200&q=80&fm=webp",
+        "geoRegion": "IT-RE",
+        "geoPlacename": "Reggio Emilia",
+        "geoPosition": "44.6989;10.6297",
+        "changefreq": "monthly",
+        "priority": "0.8",
+        "customJsonLdMode": "merge",
+        "customJsonLd": ""
+      }
+    }
+  },
+  "services": [
+    {
+      "id": "riparazioni-idrauliche",
+      "slug": "riparazioni-idrauliche",
+      "shortTitle": "Riparazioni Idrauliche",
+      "h1": "Riparazioni Idrauliche Programmate a Reggio Emilia",
+      "subtitle": "Ricerca perdite, sostituzione rubinetteria, cassette di scarico, sifoni e ripristino tubazioni con ricambi originali.",
+      "hubExcerpt": "Risolviamo gocciolamenti, perdite occulte, rubinetti difettosi e problemi agli scarichi domestici con interventi puliti e duraturi su appuntamento.",
+      "hubBullets": [
+        "Sostituzione miscelatori, sifoni e flessibili",
+        "Riparazione cassette WC ad incasso ed esterne",
+        "Ricerca perdite non invasiva e ripristino tubi"
+      ],
+      "image": "https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?auto=format&fit=crop&w=1000&q=80&fm=webp",
+      "imageAlt": "Riparazione rubinetteria e impianto idraulico a Reggio Emilia",
+      "priceOffer": "80",
+      "priceCurrency": "EUR",
+      "ctaBannerTitle": "Devi sistemare un guasto o sostituire la rubinetteria?",
+      "ctaBannerText": "Chiamaci per fissare un appuntamento comodo con i nostri tecnici a Reggio Emilia e provincia.",
+      "ctaBannerLabel": "Chiamaci +39 0522 000000",
+      "ctaBannerHref": "tel:+390522000000",
+      "blocks": [
+        {
+          "id": "srv1-b1",
+          "type": "h2",
+          "text": "Interventi risolutivi su ogni componente dell'impianto"
+        },
+        {
+          "id": "srv1-b2",
+          "type": "lead",
+          "text": "Un piccolo gocciolamento o una cassetta di scarico che perde possono causare sprechi d'acqua rilevanti e danni alle murature nel tempo."
+        },
+        {
+          "id": "srv1-b3",
+          "type": "paragraph",
+          "text": "Interveniamo su appuntamento in tutta la provincia di Reggio Emilia per eseguire riparazioni idrauliche accurate, utilizzando ricambi certificati delle principali marche (Geberit, Grohe, Valsir, Pucci)."
+        },
+        {
+          "id": "srv1-b4",
+          "type": "h3",
+          "text": "Principali lavorazioni eseguite"
+        },
+        {
+          "id": "srv1-b5",
+          "type": "list",
+          "listType": "bullet",
+          "items": [
+            "Sostituzione rubinetti, miscelatori cucina e bagno",
+            "Manutenzione e riparazione cassette di scarico WC ad incasso",
+            "Disostruzione e rifacimento colonne di scarico domestiche",
+            "Installazione valvole di intercettazione e riduttori di pressione"
+          ]
+        },
+        {
+          "id": "srv1-b6",
+          "type": "table",
+          "col1Header": "Tipologia Intervento",
+          "col2Header": "Nota Operativa",
+          "rows": [
+            {
+              "col1": "Sostituzione miscelatore / sifone",
+              "col2": "Intervento rapido con ricambi certificati"
+            },
+            {
+              "col1": "Revisione cassetta WC ad incasso",
+              "col2": "Sostituzione galleggiante e guarnizioni originali"
+            },
+            {
+              "col1": "Installazione riduttore di pressione",
+              "col2": "Protezione impianto e caldaia da sovrappressioni"
+            }
+          ]
+        }
+      ],
+      "faqs": [
+        {
+          "question": "Fornite direttamente voi i ricambi per le cassette WC ad incasso?",
+          "answer": "Sì, disponiamo dei ricambi originali per le principali marche installate nelle abitazioni di Reggio Emilia, tra cui Geberit, Valsir, Pucci e Grohe."
+        },
+        {
+          "question": "Come si prenota una riparazione idraulica?",
+          "answer": "Puoi chiamarci direttamente al +39 0522 000000 oppure inviarci una richiesta dalla pagina Contatti indicando il problema riscontrato."
+        }
+      ],
+      "seo": {
+        "title": "Riparazioni Idrauliche a Reggio Emilia | Rubinetti, Scarichi e Tubazioni",
+        "description": "Servizio di riparazioni idrauliche programmate a Reggio Emilia. Sostituzione miscelatori, cassette WC ad incasso, sifoni e ricerca perdite.",
+        "keywords": "riparazioni idrauliche reggio emilia, sostituzione rubinetti reggio emilia, riparazione cassetta wc reggio emilia",
+        "canonical": "https://idraulico-a-reggio-emilia.it/servizi/riparazioni-idrauliche",
+        "robots": "index, follow",
+        "ogType": "website",
+        "ogTitle": "Riparazioni Idrauliche a Reggio Emilia | Idraulico RE",
+        "ogDescription": "Riparazioni idrauliche accurate con ricambi originali a Reggio Emilia e provincia.",
+        "ogImage": "https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?auto=format&fit=crop&w=1200&q=80&fm=webp",
+        "geoRegion": "IT-RE",
+        "geoPlacename": "Reggio Emilia",
+        "geoPosition": "44.6989;10.6297",
+        "changefreq": "monthly",
+        "priority": "0.85",
+        "customJsonLdMode": "merge",
+        "customJsonLd": ""
+      }
+    },
+    {
+      "id": "caldaie-riscaldamento",
+      "slug": "caldaie-riscaldamento",
+      "shortTitle": "Caldaie e Riscaldamento",
+      "h1": "Installazione Caldaie e Riscaldamento a Reggio Emilia",
+      "subtitle": "Sostituzione caldaie a condensazione, pompe di calore ibride, lavaggio impianti e valvole termostatiche.",
+      "hubExcerpt": "Migliora l'efficienza energetica della tua casa a Reggio Emilia con caldaie a condensazione di ultima generazione e sistemi di termoregolazione evoluti.",
+      "hubBullets": [
+        "Sostituzione caldaie a condensazione ad alta resa",
+        "Lavaggio chimico impianto e defangatore magnetico",
+        "Installazione termostati smart e valvole termostatiche"
+      ],
+      "image": "https://images.unsplash.com/photo-1585704032915-c3400ca199e7?auto=format&fit=crop&w=1000&q=80&fm=webp",
+      "imageAlt": "Installazione caldaia a condensazione a Reggio Emilia",
+      "priceOffer": "1850",
+      "priceCurrency": "EUR",
+      "ctaBannerTitle": "Vuoi sostituire la tua vecchia caldaia a Reggio Emilia?",
+      "ctaBannerText": "Richiedi una consulenza tecnica per scegliere il generatore più adatto e ridurre i consumi in bolletta.",
+      "ctaBannerLabel": "Chiamaci +39 0522 000000",
+      "ctaBannerHref": "tel:+390522000000",
+      "blocks": [
+        {
+          "id": "srv2-b1",
+          "type": "h2",
+          "text": "Efficienza termica e sicurezza per gli inverni emiliani"
+        },
+        {
+          "id": "srv2-b2",
+          "type": "lead",
+          "text": "Il clima della pianura reggiana richiede impianti di riscaldamento affidabili, ben bilanciati e conformi alle normative regionali dell'Emilia-Romagna."
+        },
+        {
+          "id": "srv2-b3",
+          "type": "paragraph",
+          "text": "Eseguiamo la sostituzione completa di caldaie tradizionali con modelli a condensazione ad alto rendimento, abbinando sempre il lavaggio dell'impianto e l'installazione di defangatore magnetico e neutralizzatore di condensa. Scopri anche perché è utile proteggere l'impianto dal calcare nella nostra guida dedicata all'[addolcitore acqua a Reggio Emilia](/blog/addolcitore-acqua-reggio-emilia)."
+        },
+        {
+          "id": "srv2-b4",
+          "type": "h3",
+          "text": "Cosa include la nostra installazione caldaia"
+        },
+        {
+          "id": "srv2-b5",
+          "type": "list",
+          "listType": "bullet",
+          "items": [
+            "Sopralluogo tecnico e dimensionamento della potenza termica",
+            "Smontaggio e smaltimento a norma della vecchia caldaia",
+            "Lavaggio circuito di riscaldamento e installazione filtro defangatore",
+            "Adeguamento canna fumaria, prima accensione e libretto impianto CRITER"
+          ]
+        }
+      ],
+      "faqs": [
+        {
+          "question": "È obbligatorio installare il defangatore quando si cambia la caldaia?",
+          "answer": "Sì, la normativa UNI 8065 prevede il trattamento dell'acqua e l'installazione di un filtro defangatore per proteggere lo scambiatore della nuova caldaia a condensazione."
+        }
+      ],
+      "seo": {
+        "title": "Installazione Caldaie a Reggio Emilia | Condensazione e Riscaldamento",
+        "description": "Installazione e sostituzione caldaie a condensazione a Reggio Emilia e provincia. Lavaggio impianti, defangatore e registrazione libretto CRITER.",
+        "keywords": "installazione caldaie reggio emilia, sostituzione caldaia reggio emilia, caldaie condensazione reggio emilia",
+        "canonical": "https://idraulico-a-reggio-emilia.it/servizi/caldaie-riscaldamento",
+        "robots": "index, follow",
+        "ogType": "website",
+        "ogTitle": "Installazione Caldaie a Reggio Emilia | Idraulico RE",
+        "ogDescription": "Sostituzione caldaie a condensazione e ottimizzazione riscaldamento a Reggio Emilia.",
+        "ogImage": "https://images.unsplash.com/photo-1585704032915-c3400ca199e7?auto=format&fit=crop&w=1200&q=80&fm=webp",
+        "geoRegion": "IT-RE",
+        "geoPlacename": "Reggio Emilia",
+        "geoPosition": "44.6989;10.6297",
+        "changefreq": "monthly",
+        "priority": "0.9",
+        "customJsonLdMode": "merge",
+        "customJsonLd": ""
+      }
+    },
+    {
+      "id": "rifacimento-bagno",
+      "slug": "rifacimento-bagno",
+      "shortTitle": "Rifacimento Bagno",
+      "h1": "Rifacimento Bagno Chiavi in Mano a Reggio Emilia",
+      "subtitle": "Progettazione e rifacimento completo degli impianti idrici e di scarico del bagno, sanitari sospesi e docce filo pavimento.",
+      "hubExcerpt": "Rinnoviamo completamente il tuo bagno a Reggio Emilia partendo dal rifacimento delle tubazioni di carico e scarico fino alla posa di sanitari e box doccia.",
+      "hubBullets": [
+        "Rifacimento completo tubazioni acqua calda/fredda e scarichi",
+        "Installazione moduli WC sospesi e canaline doccia filo pavimento",
+        "Coordinamento lavori e consegna certificata"
+      ],
+      "image": "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1000&q=80&fm=webp",
+      "imageAlt": "Bagno moderno ristrutturato a Reggio Emilia",
+      "priceOffer": "4500",
+      "priceCurrency": "EUR",
+      "ctaBannerTitle": "Stai progettando di ristrutturare il bagno a Reggio Emilia?",
+      "ctaBannerText": "Contattaci per un sopralluogo gratuito e un preventivo dettagliato per il rifacimento completo degli impianti.",
+      "ctaBannerLabel": "Chiamaci +39 0522 000000",
+      "ctaBannerHref": "tel:+390522000000",
+      "blocks": [
+        {
+          "id": "srv3-b1",
+          "type": "h2",
+          "text": "Un bagno moderno parte da un impianto idraulico progettato a regola d'arte"
+        },
+        {
+          "id": "srv3-b2",
+          "type": "lead",
+          "text": "Nelle ristrutturazioni a Reggio Emilia, sostituire le vecchie tubazioni zincate con sistemi multistrato di ultima generazione garantisce sicurezza ed eliminare perdite future."
+        },
+        {
+          "id": "srv3-b3",
+          "type": "paragraph",
+          "text": "Seguiamo ogni fase idraulica del rifacimento bagno: dalla demolizione e tracciatura dei nuovi punti acqua alla posa di cassette ad incasso, piatti doccia filo pavimento, scaldasalviette e rubinetteria termostatica."
+        },
+        {
+          "id": "srv3-b4",
+          "type": "h3",
+          "text": "Fasi del rifacimento idraulico del bagno"
+        },
+        {
+          "id": "srv3-b5",
+          "type": "list",
+          "listType": "numbered",
+          "items": [
+            "Sopralluogo in abitazione e verifica delle pendenze di scarico",
+            "Posa delle nuove tubazioni multistrato coibentate e collettori di distribuzione",
+            "Installazione strutture per sanitari sospesi e corpi incasso doccia",
+            "Collaudo in pressione, montaggio sanitari finali e Dichiarazione di Conformità"
+          ]
+        }
+      ],
+      "faqs": [
+        {
+          "question": "Quanto tempo richiede il rifacimento completo di un bagno?",
+          "answer": "In media un rifacimento bagno completo richiede dai 7 ai 10 giorni lavorativi, a seconda delle dimensioni e delle finiture scelte."
+        }
+      ],
+      "seo": {
+        "title": "Rifacimento Bagno a Reggio Emilia | Impianti Chiavi in Mano",
+        "description": "Rifacimento bagno completo a Reggio Emilia. Nuove tubazioni multistrato, sanitari sospesi, docce filo pavimento e certificazione impianti.",
+        "keywords": "rifacimento bagno reggio emilia, ristrutturazione bagno reggio emilia, idraulico bagno reggio emilia",
+        "canonical": "https://idraulico-a-reggio-emilia.it/servizi/rifacimento-bagno",
+        "robots": "index, follow",
+        "ogType": "website",
+        "ogTitle": "Rifacimento Bagno a Reggio Emilia | Idraulico RE",
+        "ogDescription": "Progettazione e rifacimento completo impianti bagno a Reggio Emilia e provincia.",
+        "ogImage": "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1200&q=80&fm=webp",
+        "geoRegion": "IT-RE",
+        "geoPlacename": "Reggio Emilia",
+        "geoPosition": "44.6989;10.6297",
+        "changefreq": "monthly",
+        "priority": "0.9",
+        "customJsonLdMode": "merge",
+        "customJsonLd": ""
+      }
+    },
+    {
+      "id": "impianti-residenziali",
+      "slug": "impianti-residenziali",
+      "shortTitle": "Impianti Idrici & Addolcitori",
+      "h1": "Impianti Idrici Residenziali e Addolcitori a Reggio Emilia",
+      "subtitle": "Realizzazione impianti idrico-sanitari per nuove costruzioni o ristrutturazioni, addolcitori anticalcare e autoclavi.",
+      "hubExcerpt": "Progettiamo e realizziamo impianti idrici completi per appartamenti e villette a Reggio Emilia, inclusi sistemi di addolcimento acqua contro il calcare.",
+      "hubBullets": [
+        "Impianti idrico-sanitari completi con collettori sezionabili",
+        "Installazione addolcitori acqua domestici anticalcare",
+        "Gruppi di pressurizzazione, autoclavi e irrigazione giardino"
+      ],
+      "image": "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1000&q=80&fm=webp",
+      "imageAlt": "Impianto idrico residenziale e addolcitore a Reggio Emilia",
+      "priceOffer": "1100",
+      "priceCurrency": "EUR",
+      "ctaBannerTitle": "Vuoi proteggere la casa dal calcare o rifare l'impianto idrico?",
+      "ctaBannerText": "Contattaci per valutare l'installazione di un addolcitore o la progettazione dell'impianto residenziale.",
+      "ctaBannerLabel": "Chiamaci +39 0522 000000",
+      "ctaBannerHref": "tel:+390522000000",
+      "blocks": [
+        {
+          "id": "srv4-b1",
+          "type": "h2",
+          "text": "Impianti idrici durevoli e acqua dolce in tutta la casa"
+        },
+        {
+          "id": "srv4-b2",
+          "type": "lead",
+          "text": "L'acqua nella provincia di Reggio Emilia presenta una durezza elevata: un impianto moderno abbinato a un addolcitore preserva elettrodomestici, caldaia e rubinetterie."
+        },
+        {
+          "id": "srv4-b3",
+          "type": "paragraph",
+          "text": "Realizziamo impianti di distribuzione idrica a collettori ispezionabili, installiamo addolcitori automatici a scambio ionico nel locale tecnico e predisponiamo punti acqua esterni per giardini e terrazzi."
+        },
+        {
+          "id": "srv4-b4",
+          "type": "geoBox",
+          "title": "Approfondimento tecnico sul calcare a Reggio Emilia",
+          "text": "Leggi il nostro articolo dedicato su [come scegliere e installare un addolcitore acqua a Reggio Emilia](/blog/addolcitore-acqua-reggio-emilia) per scoprire i benefici reali su caldaia e bollette."
+        }
+      ],
+      "faqs": [
+        {
+          "question": "Dove viene installato l'addolcitore domestico?",
+          "answer": "Solitamente l'addolcitore viene installato in garage, cantina o centrale termica, subito a valle del contatore dell'acqua potabile."
+        }
+      ],
+      "seo": {
+        "title": "Impianti Idrici e Addolcitori a Reggio Emilia | Idraulico RE",
+        "description": "Realizzazione impianti idrico-sanitari residenziali e installazione addolcitori acqua anticalcare a Reggio Emilia e provincia.",
+        "keywords": "impianti idrici reggio emilia, addolcitore acqua reggio emilia, impianto idraulico casa reggio emilia",
+        "canonical": "https://idraulico-a-reggio-emilia.it/servizi/impianti-residenziali",
+        "robots": "index, follow",
+        "ogType": "website",
+        "ogTitle": "Impianti Idrici e Addolcitori a Reggio Emilia",
+        "ogDescription": "Impianti idraulici residenziali certificati e sistemi anticalcare a Reggio Emilia.",
+        "ogImage": "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1200&q=80&fm=webp",
+        "geoRegion": "IT-RE",
+        "geoPlacename": "Reggio Emilia",
+        "geoPosition": "44.6989;10.6297",
+        "changefreq": "monthly",
+        "priority": "0.85",
+        "customJsonLdMode": "merge",
+        "customJsonLd": ""
+      }
+    }
+  ],
+  "posts": [
+    {
+      "id": "addolcitore-acqua-reggio-emilia",
+      "slug": "addolcitore-acqua-reggio-emilia",
+      "category": "Trattamento Acqua",
+      "date": "12 Ottobre 2026",
+      "dateIso": "2026-10-12",
+      "readingTime": "4 min di lettura",
+      "title": "Addolcitore acqua a Reggio Emilia: perché è fondamentale contro il calcare",
+      "excerpt": "L'acqua di Reggio Emilia è tra le più ricche di calcare in Emilia-Romagna. Scopri come un addolcitore protegge caldaia, tubazioni ed elettrodomestici.",
+      "coverImage": "https://images.unsplash.com/photo-1585704032915-c3400ca199e7?auto=format&fit=crop&w=1200&q=80&fm=webp",
+      "coverImageAlt": "Impianto con addolcitore acqua domestico a Reggio Emilia",
+      "sidebarCtaTitle": "Vuoi installare un addolcitore a Reggio Emilia?",
+      "sidebarCtaText": "Chiamaci per verificare gli spazi nel tuo locale tecnico e ricevere un preventivo chiaro.",
+      "sidebarCtaLabel": "Chiamaci +39 0522 000000",
+      "sidebarCtaHref": "tel:+390522000000",
+      "blocks": [
+        {
+          "id": "post1-b1",
+          "type": "lead",
+          "text": "Chi vive a Reggio Emilia e provincia conosce bene le incrostazioni bianche su rubinetti, box doccia e resistenze degli elettrodomestici: la durezza dell'acqua locale supera spesso i 30-35 gradi francesi (°f)."
+        },
+        {
+          "id": "post1-b2",
+          "type": "h2",
+          "text": "I danni silenziosi del calcare su caldaia e tubazioni"
+        },
+        {
+          "id": "post1-b3",
+          "type": "paragraph",
+          "text": "Il calcare non è solo un problema estetico sui vetri della doccia. All'interno dello scambiatore della caldaia o delle tubazioni dell'acqua calda, anche solo 2 millimetri di deposito calcareo riducono lo scambio termico fino al 15-20%, facendo aumentare i consumi di gas."
+        },
+        {
+          "id": "post1-b4",
+          "type": "image",
+          "url": "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1000&q=80&fm=webp",
+          "alt": "Collettori idrici e filtro di protezione impianto",
+          "caption": "Un locale tecnico ordinato con filtro dissabbiatore e addolcitore protegge l'intera abitazione."
+        },
+        {
+          "id": "post1-b5",
+          "type": "h2",
+          "text": "Come funziona un addolcitore a scambio ionico"
+        },
+        {
+          "id": "post1-b6",
+          "type": "paragraph",
+          "text": "L'addolcitore domestico utilizza resine alimentari che trattengono gli ioni di calcio e magnesio responsabili del calcare, restituendo acqua dolce in tutta la casa. Periodicamente l'apparecchio effettua in autonomia un lavaggio di rigenerazione con comune sale in pastiglie."
+        },
+        {
+          "id": "post1-b7",
+          "type": "geoBox",
+          "title": "Consiglio dell'Idraulico a Reggio Emilia",
+          "text": "Abbinare un addolcitore a una nuova [installazione caldaia a condensazione](/servizi/caldaie-riscaldamento) o a un [impianto idrico residenziale](/servizi/impianti-residenziali) allunga la vita dell'impianto e mantiene valida la garanzia del produttore."
+        }
+      ],
+      "faqs": [
+        {
+          "question": "L'acqua addolcita si può bere?",
+          "answer": "Sì, se l'addolcitore è correttamente regolato intorno ai 12-15 °f e sottoposto a regolare manutenzione annuale, l'acqua rimane potabile."
+        }
+      ],
+      "seo": {
+        "title": "Addolcitore Acqua a Reggio Emilia: Vantaggi e Costi | Blog Idraulico RE",
+        "description": "Guida completa all'addolcitore acqua a Reggio Emilia: come eliminare il calcare, proteggere la caldaia e risparmiare sui consumi domestici.",
+        "keywords": "addolcitore acqua reggio emilia, calcare acqua reggio emilia, durezza acqua reggio emilia",
+        "canonical": "https://idraulico-a-reggio-emilia.it/blog/addolcitore-acqua-reggio-emilia",
+        "robots": "index, follow",
+        "ogType": "article",
+        "ogTitle": "Addolcitore acqua a Reggio Emilia: perché è fondamentale contro il calcare",
+        "ogDescription": "Scopri come proteggere caldaia, rubinetti e tubazioni dalla durezza dell'acqua a Reggio Emilia.",
+        "ogImage": "https://images.unsplash.com/photo-1585704032915-c3400ca199e7?auto=format&fit=crop&w=1200&q=80&fm=webp",
+        "geoRegion": "IT-RE",
+        "geoPlacename": "Reggio Emilia",
+        "geoPosition": "44.6989;10.6297",
+        "changefreq": "monthly",
+        "priority": "0.75",
+        "customJsonLdMode": "merge",
+        "customJsonLd": ""
+      }
+    },
+    {
+      "id": "quando-sostituire-caldaia-condensazione",
+      "slug": "quando-sostituire-caldaia-condensazione",
+      "category": "Riscaldamento",
+      "date": "28 Settembre 2026",
+      "dateIso": "2026-09-28",
+      "readingTime": "5 min di lettura",
+      "title": "Quando conviene sostituire la vecchia caldaia con una a condensazione",
+      "excerpt": "Consumi elevati, blocchi frequenti e ricambi difficili da reperire: ecco i segnali per pianificare la sostituzione della caldaia prima dell'inverno.",
+      "coverImage": "https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?auto=format&fit=crop&w=1200&q=80&fm=webp",
+      "coverImageAlt": "Manutenzione e verifica caldaia domestica",
+      "sidebarCtaTitle": "Stai valutando una nuova caldaia?",
+      "sidebarCtaText": "Parla con un nostro tecnico a Reggio Emilia per un preventivo su misura.",
+      "sidebarCtaLabel": "Chiamaci +39 0522 000000",
+      "sidebarCtaHref": "tel:+390522000000",
+      "blocks": [
+        {
+          "id": "post2-b1",
+          "type": "lead",
+          "text": "Se la tua caldaia ha più di 12-15 anni, il suo rendimento stagionale è nettamente inferiore rispetto ai moderni generatori a condensazione modulanti."
+        },
+        {
+          "id": "post2-b2",
+          "type": "h2",
+          "text": "I 4 segnali che indicano che è il momento di cambiare caldaia"
+        },
+        {
+          "id": "post2-b3",
+          "type": "list",
+          "listType": "bullet",
+          "items": [
+            "Bollette del gas in crescita nonostante abitudini di utilizzo invariate",
+            "Riparazioni frequenti su scheda elettronica, circolatore o scambiatore",
+            "Difficoltà nel mantenere costante la temperatura dell'acqua calda sanitaria",
+            "Rumorosità anomala durante l'accensione del bruciatore"
+          ]
+        },
+        {
+          "id": "post2-b4",
+          "type": "paragraph",
+          "text": "Pianificare la sostituzione in autunno permette di lavorare con calma, eseguire il lavaggio dell'impianto di riscaldamento e accedere alle agevolazioni fiscali vigenti. Scopri i dettagli sul nostro servizio di [installazione caldaie a Reggio Emilia](/servizi/caldaie-riscaldamento)."
+        }
+      ],
+      "faqs": [],
+      "seo": {
+        "title": "Quando Sostituire la Caldaia con una a Condensazione | Idraulico RE",
+        "description": "Scopri quando conviene cambiare la vecchia caldaia a Reggio Emilia e quanto si risparmia con una caldaia a condensazione di nuova generazione.",
+        "keywords": "sostituire caldaia reggio emilia, caldaia a condensazione risparmio, quando cambiare caldaia",
+        "canonical": "https://idraulico-a-reggio-emilia.it/blog/quando-sostituire-caldaia-condensazione",
+        "robots": "index, follow",
+        "ogType": "article",
+        "ogTitle": "Quando conviene sostituire la vecchia caldaia con una a condensazione",
+        "ogDescription": "Segnali, vantaggi e consigli pratici prima dell'accensione invernale.",
+        "ogImage": "https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?auto=format&fit=crop&w=1200&q=80&fm=webp",
+        "geoRegion": "IT-RE",
+        "geoPlacename": "Reggio Emilia",
+        "geoPosition": "44.6989;10.6297",
+        "changefreq": "monthly",
+        "priority": "0.75",
+        "customJsonLdMode": "merge",
+        "customJsonLd": ""
+      }
+    },
+    {
+      "id": "progettare-rifacimento-bagno-senza-imprevisti",
+      "slug": "progettare-rifacimento-bagno-senza-imprevisti",
+      "category": "Ristrutturazione Bagno",
+      "date": "14 Settembre 2026",
+      "dateIso": "2026-09-14",
+      "readingTime": "4 min di lettura",
+      "title": "Come progettare il rifacimento del bagno senza imprevisti sugli impianti",
+      "excerpt": "Pendenze degli scarichi, cassette ad incasso e docce filo pavimento: gli aspetti idraulici fondamentali da verificare prima di scegliere i rivestimenti.",
+      "coverImage": "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1200&q=80&fm=webp",
+      "coverImageAlt": "Progettazione bagno moderno con doccia filo pavimento",
+      "sidebarCtaTitle": "Devi rifare il bagno a Reggio Emilia?",
+      "sidebarCtaText": "Chiamaci prima di iniziare i lavori per un sopralluogo tecnico sugli scarichi.",
+      "sidebarCtaLabel": "Chiamaci +39 0522 000000",
+      "sidebarCtaHref": "tel:+390522000000",
+      "blocks": [
+        {
+          "id": "post3-b1",
+          "type": "lead",
+          "text": "Nel rifacimento del bagno l'estetica è importante, ma la vera durata nel tempo dipende da ciò che sta sotto il pavimento e dentro le pareti."
+        },
+        {
+          "id": "post3-b2",
+          "type": "h2",
+          "text": "Verifiche preliminari prima di demolire"
+        },
+        {
+          "id": "post3-b3",
+          "type": "paragraph",
+          "text": "Prima di spostare un WC o installare una doccia filo pavimento occorre misurare lo spessore del massetto e la posizione della colonna fecale condominiale. Una pendenza corretta degli scarichi evita ristagni e cattivi odori negli anni successivi."
+        },
+        {
+          "id": "post3-b4",
+          "type": "paragraph",
+          "text": "Approfondisci come organizziamo i lavori nella pagina dedicata al [rifacimento bagno a Reggio Emilia](/servizi/rifacimento-bagno)."
+        }
+      ],
+      "faqs": [],
+      "seo": {
+        "title": "Progettare il Rifacimento Bagno Senza Imprevisti | Idraulico RE",
+        "description": "Consigli idraulici per ristrutturare il bagno a Reggio Emilia: pendenze scarichi, docce filo pavimento e sanitari sospesi.",
+        "keywords": "progettare rifacimento bagno, impianto idraulico bagno, doccia filo pavimento scarico",
+        "canonical": "https://idraulico-a-reggio-emilia.it/blog/progettare-rifacimento-bagno-senza-imprevisti",
+        "robots": "index, follow",
+        "ogType": "article",
+        "ogTitle": "Come progettare il rifacimento del bagno senza imprevisti sugli impianti",
+        "ogDescription": "Gli aspetti tecnici da verificare prima di ristrutturare il bagno.",
+        "ogImage": "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1200&q=80&fm=webp",
+        "geoRegion": "IT-RE",
+        "geoPlacename": "Reggio Emilia",
+        "geoPosition": "44.6989;10.6297",
+        "changefreq": "monthly",
+        "priority": "0.75",
+        "customJsonLdMode": "merge",
+        "customJsonLd": ""
+      }
+    }
+  ]
+}

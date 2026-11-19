@@ -1,0 +1,118 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BlocksRenderer from '../../components/BlocksRenderer.astro';
+import siteData from '../../data/siteData.json';
+import {
+  buildResponsiveSrcset,
+  normalizeAstroHref,
+  optimizeImageUrlToWebp
+} from '../../utils/seoAndContent.js';
+
+export function getStaticPaths() {
+  return (siteData.posts || []).map((post) => ({
+    params: { slug: post.slug },
+    props: { post }
+  }));
+}
+
+const { post } = Astro.props;
+const g = siteData.global;
+const sCtaLabel = post.sidebarCtaLabel || g.ctaLabel;
+const sCtaHref = normalizeAstroHref(post.sidebarCtaHref || g.phoneHref);
+---
+
+<BaseLayout entity={post} routeContext={{ type: 'post', id: post.id }} preloadImage={post.coverImage}>
+  <article>
+    <!-- TESTATA EDITORIALE -->
+    <section class="bg-white border-b border-slate-200 py-12 lg:py-16">
+      <div class="container mx-auto px-4 lg:px-8 max-w-5xl space-y-5">
+        <nav aria-label="Breadcrumb" class="text-xs text-slate-500 flex items-center gap-2">
+          <a href="/" class="hover:text-brand-blue">Home</a>
+          <span>/</span>
+          <a href="/blog" class="hover:text-brand-blue">Blog</a>
+          <span>/</span>
+          <span class="text-slate-800 font-semibold">{post.category}</span>
+        </nav>
+
+        <div class="flex flex-wrap items-center gap-3 text-xs">
+          <span class="bg-sky-100 text-brand-blue font-extrabold px-3 py-1 rounded-full">{post.category}</span>
+          <span class="text-slate-500">{post.date}</span>
+          <span class="text-slate-400">&bull;</span>
+          <span class="text-slate-500">{post.readingTime}</span>
+        </div>
+
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-brand-blue leading-tight">
+          {post.title}
+        </h1>
+
+        <p class="text-lg text-slate-600 leading-relaxed max-w-3xl">
+          {post.excerpt}
+        </p>
+
+        <div class="pt-3">
+          <img
+            src={optimizeImageUrlToWebp(post.coverImage)}
+            srcset={buildResponsiveSrcset(post.coverImage)}
+            sizes="(max-width: 1024px) 100vw, 960px"
+            alt={post.coverImageAlt}
+            width="1200"
+            height="750"
+            loading="eager"
+            fetchpriority="high"
+            decoding="async"
+            class="w-full h-72 sm:h-[420px] object-cover rounded-3xl shadow-md"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- CORPO ARTICOLO + SIDEBAR STICKY CTA CHIAMATE -->
+    <section class="py-12 lg:py-16 container mx-auto px-4 lg:px-8 max-w-5xl">
+      <div class="grid lg:grid-cols-12 gap-10 items-start">
+        <div class="lg:col-span-8">
+          <BlocksRenderer blocks={post.blocks} faqs={post.faqs} />
+
+          <div class="mt-10 pt-6 border-t border-slate-200">
+            <a href="/blog" class="inline-flex items-center gap-2 text-sm font-bold text-brand-blue hover:text-brand-light">
+              <span>&larr;</span>
+              <span>Torna a tutti gli articoli del Blog</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- SIDEBAR STICKY -->
+        <aside class="lg:col-span-4 lg:sticky lg:top-24 space-y-6">
+          <div class="bg-brand-blue text-white rounded-3xl p-6 sm:p-7 shadow-xl space-y-4">
+            <div class="inline-block bg-white/15 text-sky-200 text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full">
+              Consulenza Diretta
+            </div>
+            <div class="text-xl font-extrabold leading-snug">{post.sidebarCtaTitle}</div>
+            <p class="text-sm text-blue-100 leading-relaxed">{post.sidebarCtaText}</p>
+            <div class="pt-1">
+              <a
+                href={sCtaHref}
+                class="w-full inline-flex items-center justify-center gap-2 bg-brand-green hover:bg-brand-greenHover text-white font-bold px-5 py-3.5 rounded-xl shadow-md transition-colors text-sm"
+              >
+                <span>{sCtaLabel}</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-2xl border border-slate-200 p-6 space-y-3">
+            <div class="text-xs font-extrabold uppercase tracking-wider text-slate-400">Servizi Correlati</div>
+            <ul class="space-y-2.5 text-sm">
+              {(siteData.services || []).map((srv) => (
+                <li>
+                  <a href={`/servizi/${srv.slug}`} class="text-slate-700 hover:text-brand-blue font-semibold flex items-center justify-between">
+                    <span>{srv.shortTitle}</span>
+                    <span class="text-brand-light">&rarr;</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </article>
+</BaseLayout>

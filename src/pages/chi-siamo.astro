@@ -1,0 +1,39 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import BlocksRenderer from '../components/BlocksRenderer.astro';
+import siteData from '../data/siteData.json';
+import {
+  buildResponsiveSrcset,
+  optimizeImageUrlToWebp
+} from '../utils/seoAndContent.js';
+
+const p = siteData.pages.chiSiamo;
+---
+
+<BaseLayout entity={p} routeContext={{ type: 'page', id: 'chiSiamo' }} preloadImage={p.heroImage}>
+  <article>
+    <section class="bg-brand-blue text-white py-14 lg:py-20">
+      <div class="container mx-auto px-4 lg:px-8 max-w-4xl text-center space-y-4">
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold">{p.h1}</h1>
+        <p class="text-blue-100 text-base sm:text-lg leading-relaxed">{p.heroSubtitle}</p>
+      </div>
+    </section>
+
+    <section class="py-14 lg:py-16 container mx-auto px-4 lg:px-8 max-w-4xl space-y-8">
+      <img
+        src={optimizeImageUrlToWebp(p.heroImage)}
+        srcset={buildResponsiveSrcset(p.heroImage)}
+        sizes="(max-width: 768px) 100vw, 896px"
+        alt={p.heroImageAlt}
+        width="1200"
+        height="750"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+        class="w-full h-72 sm:h-96 object-cover rounded-3xl shadow-md"
+      />
+
+      <BlocksRenderer blocks={p.blocks} faqs={p.faqs} />
+    </section>
+  </article>
+</BaseLayout>

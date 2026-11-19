@@ -1,0 +1,169 @@
+---
+import siteData from '../data/siteData.json';
+import {
+  FALLBACK_IMAGE,
+  buildResponsiveSrcset,
+  normalizeAstroHref,
+  optimizeImageUrlToWebp,
+  renderInlineRichText
+} from '../utils/seoAndContent.js';
+
+interface Props {
+  blocks?: any[];
+  faqs?: any[];
+}
+
+const { blocks = [], faqs = [] } = Astro.props;
+const h2Blocks = (blocks || [])
+  .map((b, idx) => ({ ...b, _idx: idx }))
+  .filter((b) => b.type === 'h2' && b.text && b.text.trim());
+
+const validFaqs = (faqs || []).filter((f) => f.question && f.answer);
+---
+
+{h2Blocks.length >= 2 && (
+  <nav aria-label="Indice dei contenuti della pagina" class="bg-sky-50/70 border border-sky-200/80 rounded-2xl p-5 mb-8">
+    <div class="text-xs font-extrabold uppercase tracking-wider text-brand-blue mb-3">In questa pagina</div>
+    <ul class="space-y-2 text-sm">
+      {h2Blocks.map((b) => (
+        <li class="flex items-start gap-2">
+          <span class="text-brand-light font-bold">&rsaquo;</span>
+          <a href={`#sezione-${b.id || b._idx}`} class="text-slate-700 hover:text-brand-blue font-medium underline-offset-2 hover:underline">
+            {b.text}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+)}
+
+<div class="space-y-6">
+  {(blocks || []).map((b, idx) => {
+    const secId = `sezione-${b.id || idx}`;
+
+    if (b.type === 'h2') {
+      return <h2 id={secId} class="text-2xl sm:text-3xl font-extrabold text-brand-blue pt-4 pb-1 scroll-mt-24">{b.text || ''}</h2>;
+    }
+    if (b.type === 'h3') {
+      return <h3 id={secId} class="text-xl font-bold text-slate-900 pt-2 scroll-mt-24">{b.text || ''}</h3>;
+    }
+    if (b.type === 'lead') {
+      return <p class="text-lg sm:text-xl text-slate-700 font-medium leading-relaxed" set:html={renderInlineRichText(b.text || '')} />;
+    }
+    if (b.type === 'paragraph') {
+      return <p class="text-slate-600 leading-relaxed text-base" set:html={renderInlineRichText(b.text || '')} />;
+    }
+    if (b.type === 'list') {
+      const items = Array.isArray(b.items) ? b.items.filter(Boolean) : [];
+      const isOrdered = b.listType === 'numbered' || b.listType === 'howto';
+      if (isOrdered) {
+        return (
+          <ol class="list-decimal pl-6 space-y-2.5 text-slate-700 bg-white p-6 rounded-2xl border border-slate-200/80 shadow-xs">
+            {items.map((it: string) => (
+              <li class="pl-1 leading-relaxed" set:html={renderInlineRichText(it)} />
+            ))}
+          </ol>
+        );
+      }
+      return (
+        <ul class="space-y-2.5 text-slate-700 bg-white p-6 rounded-2xl border border-slate-200/80 shadow-xs">
+          {items.map((it: string) => (
+            <li class="flex items-start gap-2.5 leading-relaxed">
+              <span class="w-5 h-5 rounded-full bg-sky-100 text-brand-light flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">&#10003;</span>
+              <span set:html={renderInlineRichText(it)} />
+            </li>
+          ))}
+        </ul>
+      );
+    }
+    if (b.type === 'image') {
+      const src = optimizeImageUrlToWebp(b.url || FALLBACK_IMAGE);
+      const srcset = buildResponsiveSrcset(b.url || FALLBACK_IMAGE);
+      return (
+        <figure class="my-4 bg-white p-3 rounded-2xl border border-slate-200 shadow-xs">
+          <img
+            src={src}
+            srcset={srcset}
+            sizes="(max-width: 768px) 100vw, 800px"
+            alt={b.alt || 'Immagine impianto idraulico'}
+            width="1000"
+            height="600"
+            loading="lazy"
+            decoding="async"
+            class="w-full h-auto max-h-[440px] object-cover rounded-xl"
+          />
+          {b.caption && <figcaption class="text-xs text-slate-500 mt-2.5 px-1 text-center">{b.caption}</figcaption>}
+        </figure>
+      );
+    }
+    if (b.type === 'geoBox') {
+      return (
+        <aside class="bg-gradient-to-br from-sky-50 to-blue-50/70 border-l-4 border-brand-light rounded-2xl p-6 space-y-2">
+          {b.title && <div class="text-base font-extrabold text-brand-blue">{b.title}</div>}
+          <p class="text-sm sm:text-base text-slate-700 leading-relaxed" set:html={renderInlineRichText(b.text || '')} />
+        </aside>
+      );
+    }
+    if (b.type === 'table') {
+      const rows = Array.isArray(b.rows) ? b.rows : [];
+      return (
+        <div class="overflow-x-auto bg-white rounded-2xl border border-slate-200 shadow-xs">
+          <table class="w-full text-left border-collapse text-sm">
+            <thead>
+              <tr class="bg-brand-blue text-white">
+                <th class="py-3.5 px-5 font-bold">{b.col1Header || 'Voce / Intervento'}</th>
+                <th class="py-3.5 px-5 font-bold">{b.col2Header || 'Dettaglio / Indicazione'}</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100">
+              {rows.map((r: any) => (
+                <tr class="hover:bg-slate-50/80">
+                  <td class="py-3.5 px-5 font-semibold text-slate-800" set:html={renderInlineRichText(r.col1 || '')} />
+                  <td class="py-3.5 px-5 text-slate-600" set:html={renderInlineRichText(r.col2 || '')} />
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      );
+    }
+    if (b.type === 'ctaInline') {
+      const btnHref = normalizeAstroHref(b.buttonHref || siteData.global.phoneHref);
+      const btnLabel = b.buttonLabel || siteData.global.ctaLabel;
+      return (
+        <div class="bg-brand-blue text-white rounded-2xl p-6 sm:p-8 shadow-md flex flex-col md:flex-row md:items-center justify-between gap-5 my-4">
+          <div class="space-y-1.5">
+            {b.title && <div class="text-lg sm:text-xl font-extrabold">{b.title}</div>}
+            {b.text && <p class="text-blue-100 text-sm leading-relaxed">{b.text}</p>}
+          </div>
+          <div class="shrink-0">
+            <a
+              href={btnHref}
+              class="inline-flex items-center justify-center gap-2 bg-brand-green hover:bg-brand-greenHover text-white font-bold px-6 py-3.5 rounded-xl shadow-md transition-colors text-sm"
+            >
+              <span>{btnLabel}</span>
+            </a>
+          </div>
+        </div>
+      );
+    }
+    return null;
+  })}
+</div>
+
+{validFaqs.length > 0 && (
+  <section class="mt-10 pt-8 border-t border-slate-200 space-y-4">
+    <h2 class="text-2xl font-extrabold text-brand-blue">Domande Frequenti (FAQ)</h2>
+    <div class="space-y-3">
+      {validFaqs.map((f: any, i: number) => (
+        <details open={i === 0} class="group bg-white border border-slate-200 rounded-2xl p-5 shadow-xs">
+          <summary class="font-bold text-slate-900 cursor-pointer list-none flex justify-between items-center gap-4">
+            <span>{f.question}</span>
+            <span class="text-brand-light font-extrabold text-lg group-open:rotate-45 transition-transform">+</span>
+          </summary>
+          <p class="mt-3 text-sm sm:text-base text-slate-600 leading-relaxed border-t border-slate-100 pt-3">{f.answer}</p>
+        </details>
+      ))}
+    </div>
+  </section>
+)}

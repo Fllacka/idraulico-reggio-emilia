@@ -1,0 +1,99 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BlocksRenderer from '../../components/BlocksRenderer.astro';
+import siteData from '../../data/siteData.json';
+import {
+  buildResponsiveSrcset,
+  normalizeAstroHref,
+  optimizeImageUrlToWebp
+} from '../../utils/seoAndContent.js';
+
+export function getStaticPaths() {
+  return (siteData.services || []).map((srv) => ({
+    params: { slug: srv.slug },
+    props: { srv }
+  }));
+}
+
+const { srv } = Astro.props;
+const g = siteData.global;
+const ctaHref = normalizeAstroHref(srv.ctaBannerHref || g.phoneHref);
+const ctaLabel = srv.ctaBannerLabel || g.ctaLabel;
+---
+
+<BaseLayout entity={srv} routeContext={{ type: 'service', id: srv.id }} preloadImage={srv.image}>
+  <article>
+    <!-- HERO SERVIZIO DEDICATO -->
+    <section class="bg-brand-blue text-white py-14 lg:py-20">
+      <div class="container mx-auto px-4 lg:px-8 grid lg:grid-cols-12 gap-10 items-center">
+        <div class="lg:col-span-7 space-y-5">
+          <nav aria-label="Breadcrumb" class="text-xs text-blue-200 flex items-center gap-2">
+            <a href="/" class="hover:text-white">Home</a>
+            <span>/</span>
+            <a href="/servizi" class="hover:text-white">Servizi</a>
+            <span>/</span>
+            <span class="text-white font-semibold">{srv.shortTitle}</span>
+          </nav>
+          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight">{srv.h1}</h1>
+          <p class="text-blue-100 text-base sm:text-lg leading-relaxed">{srv.subtitle}</p>
+          <div class="pt-2 flex flex-wrap gap-3">
+            <a
+              href={ctaHref}
+              class="inline-flex items-center justify-center gap-2 bg-brand-green hover:bg-brand-greenHover text-white font-bold px-7 py-3.5 rounded-xl shadow-lg transition-colors text-sm sm:text-base"
+            >
+              <span>{ctaLabel}</span>
+            </a>
+            <a
+              href="/contatti"
+              class="inline-flex items-center justify-center bg-white/10 hover:bg-white/20 border border-white/25 text-white font-semibold px-6 py-3.5 rounded-xl transition-colors text-sm sm:text-base"
+            >
+              Chiedi un Preventivo
+            </a>
+          </div>
+        </div>
+        <div class="lg:col-span-5">
+          <img
+            src={optimizeImageUrlToWebp(srv.image)}
+            srcset={buildResponsiveSrcset(srv.image)}
+            sizes="(max-width: 1024px) 100vw, 42vw"
+            alt={srv.imageAlt}
+            width="1000"
+            height="700"
+            loading="eager"
+            fetchpriority="high"
+            decoding="async"
+            class="w-full h-72 sm:h-80 object-cover rounded-3xl shadow-2xl border border-white/15"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- CORPO UNIFICATO A BLOCCHI -->
+    <section class="py-14 lg:py-16 container mx-auto px-4 lg:px-8 max-w-4xl">
+      <BlocksRenderer blocks={srv.blocks} faqs={srv.faqs} />
+
+      <!-- BANNER CTA DI CONVERSIONE DEDICATO -->
+      <div class="mt-12 bg-gradient-to-r from-brand-blue to-sky-800 text-white rounded-3xl p-8 sm:p-10 shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-6">
+        <div class="space-y-2 max-w-xl">
+          <h2 class="text-2xl font-extrabold">{srv.ctaBannerTitle}</h2>
+          <p class="text-blue-100 text-sm sm:text-base leading-relaxed">{srv.ctaBannerText}</p>
+        </div>
+        <div class="shrink-0">
+          <a
+            href={ctaHref}
+            class="inline-flex items-center justify-center gap-2 bg-brand-green hover:bg-brand-greenHover text-white font-bold px-7 py-4 rounded-xl shadow-lg transition-colors text-base"
+          >
+            <span>{ctaLabel}</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="mt-8 pt-6 border-t border-slate-200">
+        <a href="/servizi" class="inline-flex items-center gap-2 text-sm font-bold text-brand-blue hover:text-brand-light">
+          <span>&larr;</span>
+          <span>Torna a tutti i servizi</span>
+        </a>
+      </div>
+    </section>
+  </article>
+</BaseLayout>
